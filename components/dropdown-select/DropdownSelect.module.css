@@ -1,0 +1,13 @@
+.dropdown-select__options {
+  background-color: var(--body-background-color);
+  margin-top: 8px;
+  max-height: 50vh; /* Limit the height to 50% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+@media screen and (max-width: 599px) {
+  .time-dropdown-wrapper {
+    max-height: 60vh; /* Adjust this as needed for the best appearance on mobile */
+  }
+  /* Other mobile-specific style adjustments */
+}

@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --body-background-color: #fff;
+  --btn-text-color: #000;
+
+  --dropdown-background-color: rgba(0, 0, 0, 0.1);
+
+  --error-background-color: rgb(84, 130, 194);
+  --error-text-color: rgb(175, 4, 4);
+
+  --para-text-color: rgba(0, 19, 49, 1);
+  --placeholder-color: rgba(0, 19, 49, 0.3);
+
+  --primary-color: rgb(84, 130, 194);
+  --primary-light-color: rgb(92, 143, 213);
+  --primary-dark-color: rgb(76, 117, 175);
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--body-background-color);
+  font-size: 1.6rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 599px) {
+  html {
+    font-size: 52%;
+  }
+}

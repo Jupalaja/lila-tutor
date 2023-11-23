@@ -1,0 +1,19 @@
+/* Insert these styles in your global.css */
+.successfulSubmission {
+    background-color: rgb(224,52,139);
+    transition: background-color 1s ease-in-out;
+  }
+  
+  .showPara {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    transition-delay: 1s;
+  }
+  
+  /* The `.hidden` class can be used to initially hide the paragraph */
+  .hidden {
+    opacity: 0;
+  }
+  
+  
+  
