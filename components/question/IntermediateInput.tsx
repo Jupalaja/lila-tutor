@@ -50,7 +50,7 @@ export function IntermediateInput() {
       <DropdownSelect 
         className={classNames(
           styles["role-dropdown"],
-          styles["goal-dropdown"],
+          styles["basic-dropdown"],
           {
             [styles["remove-margin__top"]]: chooseNum !== 0,
           }
@@ -66,7 +66,7 @@ export function IntermediateInput() {
                 key={intermediateKey}
                 className={classNames(
                   styles["role-option"],
-                  styles["goal-option"],
+                  styles["basic-option"],
                 )}
                 onClick={() => handleDropdownOptionClick(_intermediate)}
                 isSelected={isSelected}
@@ -78,7 +78,7 @@ export function IntermediateInput() {
                 >
                   {intermediateKey}
                 </span>
-                <span className={styles["goal"]}>{_intermediate}</span>
+                <span className={styles["basic"]}>{_intermediate}</span>
               </DropdownSelectOption>
             );
           })}

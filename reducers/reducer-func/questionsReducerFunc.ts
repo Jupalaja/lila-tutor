@@ -1,10 +1,10 @@
 import {
   QuestionsActionsType,
   QuestionsStateType,
-  SET_FIRST_NAME,
-  SET_INDUSTRY,
-  SET_GOALS,
-  REMOVE_GOAL,
+  SET_NAME,
+  SET_SCHOOL,
+  SET_BASICS,
+  REMOVE_BASIC,
   SET_INTERMEDIATES,
   REMOVE_INTERMEDIATE,
   SET_ADVANCEDS,
@@ -20,19 +20,19 @@ export function questionsReducerFunc(
   action: QuestionsActionsType
 ) {
   switch (action.type) {
-    case SET_FIRST_NAME:
-      return { ...state, firstName: action.payload };
+    case SET_NAME:
+      return { ...state, name: action.payload };
 
-    case SET_INDUSTRY:
-      return { ...state, industry: action.payload };
+    case SET_SCHOOL:
+      return { ...state, school: action.payload };
 
-    case SET_GOALS:
-      return { ...state, goals: [...state.goals, action.payload] };
+    case SET_BASICS:
+      return { ...state, basics: [...state.basics, action.payload] };
 
-    case REMOVE_GOAL:
+    case REMOVE_BASIC:
       return {
         ...state,
-        goals: state.goals.filter((goal) => goal !== action.payload),
+        basics: state.basics.filter((basic) => basic !== action.payload),
       };
 
     case SET_PHONE:

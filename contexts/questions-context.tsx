@@ -29,13 +29,13 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
   const percent = useMemo(
     function () {
       let answeredQues = 0;
-      const { firstName, industry, email, phone, goals, intermediates, advanceds } = state;
+      const { name, school, email, phone, basics, intermediates, advanceds } = state;
 
-      if (firstName) answeredQues += 1;
-      if (industry) answeredQues += 1;
+      if (name) answeredQues += 1;
+      if (school) answeredQues += 1;
       if (email) answeredQues += 1;
       if (phone) answeredQues += 1;
-      if (goals.length !== 0) answeredQues += 1;
+      if (basics.length !== 0) answeredQues += 1;
       if (intermediates.length !== 0) answeredQues += 1;
       if (advanceds.length !== 0) answeredQues += 1;
       

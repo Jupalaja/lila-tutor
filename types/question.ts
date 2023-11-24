@@ -8,11 +8,11 @@ export type QuestionProps = {
   readonly isRendered?: boolean;
   readonly type:
     | "intro"
-    | "firstName"
-    | "industry"
+    | "name"
+    | "school"
     | "email"
     | "phone"
-    | "goal"
+    | "basic"
     | "intermediate"
     | "advanced"
     | "zone"
@@ -20,7 +20,7 @@ export type QuestionProps = {
 
 };
 
-export type IndustriesProps = {
-  readonly showIndustriesList: boolean;
-  readonly setShowIndustriesList: Dispatch<SetStateAction<boolean>>;
+export type SchoolsProps = {
+  readonly showSchoolsList: boolean;
+  readonly setShowSchoolsList: Dispatch<SetStateAction<boolean>>;
 };

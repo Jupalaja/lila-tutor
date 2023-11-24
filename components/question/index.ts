@@ -1,9 +1,9 @@
-export { EmailInput } from "./EmailInput";
-export { FirstNameInput } from "./FirstNameInput";
-export { BasicInput } from "./BasicInput";
-export { IndustryInput } from "./IndustryInput";
 export { Intro } from "./Intro";
+export { NameInput } from "./NameInput";
+export { SchoolInput } from "./SchoolInput";
+export { EmailInput } from "./EmailInput";
 export { PhoneInput } from "./PhoneInput";
-export { Outro } from "./Outro";
+export { BasicInput } from "./BasicInput";
 export { IntermediateInput } from "./IntermediateInput";
 export { AdvancedInput } from "./AdvancedInput";
+export { Outro } from "./Outro";

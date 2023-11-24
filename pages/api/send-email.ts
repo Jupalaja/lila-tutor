@@ -21,10 +21,10 @@ async function authenticate() {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   type ReqBody = {
-    firstName: string;
-    industry: string;
+    name: string;
+    school: string;
     role: string;
-    goals: string[];
+    basics: string[];
     days: string[];
     times: string[];
     phone: string;
@@ -37,11 +37,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const client = await authenticate();
       const sheets = google.sheets({ version: 'v4', auth: client });
 
-      const goals = body.goals.join(', ');
+      const basics = body.basics.join(', ');
       const days = body.days.join(', ');
       const times = body.times.join(', ');
 
-      const googleSheetData = [body.firstName, body.industry, body.role, goals, days, times, body.type, body.phone];
+      const googleSheetData = [body.name, body.school, body.role, basics, days, times, body.type, body.phone];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
         range: 'Sheet1',
@@ -51,10 +51,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const response = await sheets.spreadsheets.values.append(googleSheetRequest);
 
       const iftttData = {
-        Nombre: body.firstName,
-        Colegio: body.industry,
+        Nombre: body.name,
+        Colegio: body.school,
         Nivel: body.role,
-        Materias: body.goals,
+        Materias: body.basics,
         Dias: body.days,
         Horas: body.times,
         Tipo: body.type,

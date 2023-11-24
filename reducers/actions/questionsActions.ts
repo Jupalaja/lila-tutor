@@ -1,7 +1,7 @@
-export const SET_FIRST_NAME = "SET_FIRST_NAME";
-export const SET_INDUSTRY = "SET_INDUSTRY";
-export const SET_GOALS = "SET_GOALS";
-export const REMOVE_GOAL = "REMOVE_GOAL";
+export const SET_NAME = "SET_NAME";
+export const SET_SCHOOL = "SET_SCHOOL";
+export const SET_BASICS = "SET_BASICS";
+export const REMOVE_BASIC = "REMOVE_BASIC";
 export const SET_PHONE = "SET_PHONE";
 export const SET_EMAIL = "SET_EMAIL";
 export const SET_INTERMEDIATES = "SET_INTERMEDIATES";
@@ -13,12 +13,12 @@ export const REMOVE_ZONE = "REMOVE_ZONE";
 export const SET_TYPE = "SET_TYPE";
 
 export type QuestionsActionsType =
-  | { type: "SET_FIRST_NAME"; payload: string }
-  | { type: "SET_INDUSTRY"; payload: string; }
+  | { type: "SET_NAME"; payload: string }
+  | { type: "SET_SCHOOL"; payload: string; }
   | { type: "SET_PHONE"; payload: string }
   | { type: "SET_EMAIL"; payload: string }
-  | { type: "SET_GOALS"; payload: string }
-  | { type: "REMOVE_GOAL"; payload: string }  
+  | { type: "SET_BASICS"; payload: string }
+  | { type: "REMOVE_BASIC"; payload: string }  
   | { type: "SET_INTERMEDIATES"; payload: string }
   | { type: "REMOVE_INTERMEDIATE"; payload: string }
   | { type: "SET_ADVANCEDS"; payload: string }

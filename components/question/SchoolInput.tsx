@@ -2,7 +2,7 @@ import {
   BtnContainer,
   Error,
   QuestionBoxPara,
-  QuestionInputIndustries,
+  QuestionInputSchools,
   QuestionNumHeading,
 } from "../index";
 import classNames from "classnames";
@@ -10,29 +10,29 @@ import styles from "./Question.module.css";
 import Image from "next/image";
 import { useQuestions, useSharedStates } from "@/contexts";
 
-export function IndustryInput() {
+export function SchoolInput() {
   const { state } = useQuestions();
-  const { firstName } = state;
+  const { name } = state;
   const {
-    showIndustriesList,
-    setShowIndustriesList,
+    showSchoolsList,
+    setShowSchoolsList,
     setErrorMsg,
     errorMsg: error,
     handleOkClick,
   } = useSharedStates();
-  const errorMsg = error.industry ?? "";
+  const errorMsg = error.school ?? "";
 
   return (
     <>
       <QuestionNumHeading questionNum={2}>
-        ¿De que colegio te graduaste, {firstName.split(" ")[0]}?
+        ¿De que colegio te graduaste, {name.split(" ")[0]}?
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona un Colegio de la lista</QuestionBoxPara>
 
-      <QuestionInputIndustries
-        showIndustriesList={showIndustriesList}
-        setShowIndustriesList={setShowIndustriesList}
+      <QuestionInputSchools
+        showSchoolsList={showSchoolsList}
+        setShowSchoolsList={setShowSchoolsList}
         setErrorMsg={setErrorMsg}
       />
 

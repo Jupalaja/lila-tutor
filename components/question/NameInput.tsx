@@ -8,25 +8,25 @@ import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
 import { ChangeEventHandler } from "react";
-import { SET_FIRST_NAME } from "@/reducers";
+import { SET_NAME } from "@/reducers";
 import { useQuestions, useSharedStates } from "@/contexts";
 
-export function FirstNameInput() {
+export function NameInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.firstName ?? "";
-  const { firstName } = state;
+  const errorMsg = error.name ?? "";
+  const { name } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     errorMsg &&
       setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.firstName;
+        delete prevValue.name;
         return prevValue;
       });
 
-    dispatch({ type: SET_FIRST_NAME, payload: event.target.value });
+    dispatch({ type: SET_NAME, payload: event.target.value });
   };
 
   return (
@@ -37,7 +37,7 @@ export function FirstNameInput() {
 
       <QuestionInputText
         placeholder="Nombre..."
-        value={firstName}
+        value={name}
         onChange={handleInputChange}
       />
 

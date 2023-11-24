@@ -37,7 +37,7 @@
   margin-right: -8px;
 }
 
-.role-option > span:not(.goal) {
+.role-option > span:not(.basic) {
   align-items: center;
   background-color: var(--body-background-color);
   border: thin solid var(--para-text-color);
@@ -52,22 +52,22 @@
   width: 24px;
 }
 
-.role-option > span:not(.goal).selected {
+.role-option > span:not(.basic).selected {
   background-color: var(--btn-text-color);
   color: var(--body-background-color);
 }
 
-/***** goal-option *****/
+/***** basic-option *****/
 
-.role-dropdown.goal-dropdown.remove-margin__top {
+.role-dropdown.basic-dropdown.remove-margin__top {
   margin-top: 0;
 }
 
-.role-dropdown.goal-dropdown > div {
+.role-dropdown.basic-dropdown > div {
   width: 38rem;
 }
 
-.goal-option.not-selected {
+.basic-option.not-selected {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -91,22 +91,22 @@
 }
 
 @media screen and (max-width: 403px) {
-  .role-dropdown.goal-dropdown > div {
+  .role-dropdown.basic-dropdown > div {
     width: 36rem;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .role-dropdown.goal-dropdown > div {
+  .role-dropdown.basic-dropdown > div {
     width: 100%;
   }
 
-  .goal-option > span:not(.goal) {
+  .basic-option > span:not(.basic) {
     align-self: flex-start;
     margin-top: 7.5px;
   }
 
-  .goal-option > .goal {
+  .basic-option > .basic {
     display: block;
     line-height: 1.25em;
     padding: 6px 0;
@@ -115,7 +115,7 @@
 }
 
 @media screen and (max-width: 368px) {
-  .goal-option > .goal {
+  .basic-option > .basic {
     width: 23rem;
   }
 }

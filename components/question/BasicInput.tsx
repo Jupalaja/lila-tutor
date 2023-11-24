@@ -11,31 +11,31 @@ import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
 import { MATERIAS } from '@/constants';
-import { REMOVE_GOAL, SET_GOALS } from "@/reducers";
+import { REMOVE_BASIC, SET_BASICS } from "@/reducers";
 
 export function BasicInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.goals ?? "";
-  const { goals } = state;
+  const errorMsg = error.basics ?? "";
+  const { basics } = state;
 
-  function handleDropdownOptionClick(_goal: string) {
+  function handleDropdownOptionClick(_basic: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.goals;
+        delete prevValue.basics;
         return prevValue;
       });
 
-    if (goals.includes(_goal)) {
-      dispatch({ type: REMOVE_GOAL, payload: _goal });
+    if (basics.includes(_basic)) {
+      dispatch({ type: REMOVE_BASIC, payload: _basic });
     } else {
-      dispatch({ type: SET_GOALS, payload: _goal });
+      dispatch({ type: SET_BASICS, payload: _basic });
 
     }
   }
 
-  const chooseNum = 2 - goals.length;
+  const chooseNum = 2 - basics.length;
 
   return (
     <>
@@ -50,25 +50,25 @@ export function BasicInput() {
       <DropdownSelect 
         className={classNames(
           styles["role-dropdown"],
-          styles["goal-dropdown"],
+          styles["basic-dropdown"],
           {
             [styles["remove-margin__top"]]: chooseNum !== 0,
           }
         )}
       >
         <div>
-          {Object.keys(MATERIAS).map((goalKey) => {
-            const _goal = MATERIAS[goalKey];
-            const isSelected = goals.includes(_goal);
+          {Object.keys(MATERIAS).map((basicKey) => {
+            const _basic = MATERIAS[basicKey];
+            const isSelected = basics.includes(_basic);
 
             return (
               <DropdownSelectOption
-                key={goalKey}
+                key={basicKey}
                 className={classNames(
                   styles["role-option"],
-                  styles["goal-option"],
+                  styles["basic-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_goal)}
+                onClick={() => handleDropdownOptionClick(_basic)}
                 isSelected={isSelected}
               >
                 <span
@@ -76,9 +76,9 @@ export function BasicInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {goalKey}
+                  {basicKey}
                 </span>
-                <span className={styles["goal"]}>{_goal}</span>
+                <span className={styles["basic"]}>{_basic}</span>
               </DropdownSelectOption>
             );
           })}

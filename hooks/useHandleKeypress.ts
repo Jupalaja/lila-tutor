@@ -9,24 +9,24 @@ export function useHandleKeypress() {
 
   const { now } = questionNum;
   const { state } = useQuestions();
-  const { firstName, industry, email, phone, goals, intermediates, advanceds } = state;
+  const { name, school, email, phone, basics, intermediates, advanceds } = state;
 
   useEffect(() => {
     function handleKeypress(event: KeyboardEvent) {
       if (event.key === "Enter") {
         event.preventDefault();
 
-        if (now + 1 === 2 && firstName === "") {
+        if (now + 1 === 2 && name === "") {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            firstName: "Por favor llena este campo",
+            name: "Por favor llena este campo",
           }));
           return;
 
-        } else if (now + 1 === 3 && industry === "") {
+        } else if (now + 1 === 3 && school === "") {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            industry: "Por favor selecciona una opción",
+            school: "Por favor selecciona una opción",
           }));
           return;
         
@@ -51,24 +51,24 @@ export function useHandleKeypress() {
           }));
           return;
 
-        } else if (now + 1 === 6 && goals.length === 0) {
+        } else if (now + 1 === 6 && basics.length === 0) {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            goals: "Por favor selecciona una opción",
+            basics: "Por favor selecciona una opción",
           }));
           return;
         
         } else if (now + 1 === 7 && intermediates.length === 0) {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            goals: "Por favor selecciona una opción",
+            basics: "Por favor selecciona una opción",
           }));
           return;
         
         } else if (now + 1 === 8 && advanceds.length === 0) {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            goals: "Por favor selecciona una opción",
+            basics: "Por favor selecciona una opción",
           }));
           return;       
         }
@@ -83,5 +83,5 @@ export function useHandleKeypress() {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstName, industry, email, now, phone, goals, intermediates, advanceds ]);
+  }, [name, school, email, now, phone, basics, intermediates, advanceds ]);
 }

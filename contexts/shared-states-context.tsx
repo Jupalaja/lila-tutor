@@ -8,8 +8,8 @@ const SharedStatesContext = createContext<SharedStatesContextType>({
   setQuestionNum: () => {},
   errorMsg: {},
   setErrorMsg: () => {},
-  showIndustriesList: false,
-  setShowIndustriesList: () => {},
+  showSchoolsList: false,
+  setShowSchoolsList: () => {},
   handleQuestionNumUpdate: () => {},
   handleOkClick: () => {},
 });
@@ -25,7 +25,7 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
   });
 
   const [errorMsg, setErrorMsg] = useState<ObjectType>({});
-  const [showIndustriesList, setShowIndustriesList] = useState(false);
+  const [showSchoolsList, setShowSchoolsList] = useState(false);
 
   function handleQuestionNumUpdate() {
     setQuestionNum((prevValue) =>
@@ -48,8 +48,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
     setQuestionNum,
     errorMsg,
     setErrorMsg,
-    showIndustriesList,
-    setShowIndustriesList,
+    showSchoolsList,
+    setShowSchoolsList,
     handleQuestionNumUpdate,
     handleOkClick,
   };

@@ -1,9 +1,9 @@
 import { QuestionProps } from "@/types";
 import classNames from "classnames";
 import {
-  FirstNameInput,
+  NameInput,
   BasicInput,
-  IndustryInput,
+  SchoolInput,
   Intro,
   PhoneInput,
   Outro,
@@ -35,11 +35,11 @@ export function Question({
       })}
     >
       {type === "intro" && <Intro />}
-      {type === "firstName" && <FirstNameInput />}
-      {type === "industry" && <IndustryInput />}
+      {type === "name" && <NameInput />}
+      {type === "school" && <SchoolInput />}
       {type === "email" && <EmailInput />}
       {type === "phone" && <PhoneInput />}
-      {type === "goal" && <BasicInput />}
+      {type === "basic" && <BasicInput />}
       {type === "intermediate" && <IntermediateInput />}
       {type === "advanced" && <AdvancedInput />}
       {type == "outro"  && <Outro />}

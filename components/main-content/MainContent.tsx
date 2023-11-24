@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Question } from "../index";
 
 export function MainContent() {
-  const { questionNum, setShowIndustriesList } = useSharedStates();
+  const { questionNum, setShowSchoolsList } = useSharedStates();
   const { prev, now } = questionNum;
 
   useHandleKeypress();
@@ -12,7 +12,7 @@ export function MainContent() {
 
   useEffect(() => {
     function handleClick() {
-      setShowIndustriesList(false);
+      setShowSchoolsList(false);
     }
 
     document.addEventListener("click", handleClick);
@@ -38,7 +38,7 @@ export function MainContent() {
 
         {[0, 2].includes(prev ?? -1) && [now - 1, now, now + 1].includes(1) && (
           <Question
-            type="firstName"
+            type="name"
             outView={[now - 1, now + 1].includes(1)}
             outViewSlide={now - 1 === 1 ? "up" : "down"}
             inView={now === 1}
@@ -48,7 +48,7 @@ export function MainContent() {
 
         {[1, 3].includes(prev ?? 0) && [now - 1, now, now + 1].includes(2) && (
           <Question
-            type="industry"
+            type="school"
             outView={[now - 1, now + 1].includes(2)}
             outViewSlide={now - 1 === 2 ? "up" : "down"}
             inView={now === 2}
@@ -79,7 +79,7 @@ export function MainContent() {
 
         {[4, 6].includes(prev ?? 0) && [now - 1, now, now + 1].includes(5) && (
           <Question
-            type="goal"
+            type="basic"
             outView={[now - 1, now + 1].includes(5)}
             outViewSlide={now - 1 === 5 ? "up" : "down"}
             inView={now === 5}

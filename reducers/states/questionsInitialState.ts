@@ -1,8 +1,8 @@
 export const questionsInitialState = {
-  firstName: "",
-  industry: "",
+  name: "",
+  school: "",
   role: "",
-  goals: [],
+  basics: [],
   intermediates: [],
   advanceds: [],
   zones: [],
@@ -14,10 +14,10 @@ export const questionsInitialState = {
 };
 
 export type QuestionsStateType = {
-  firstName: string;
-  industry: string;
+  name: string;
+  school: string;
   role: string; 
-  goals: string[];    
+  basics: string[];    
   intermediates : string[];
   advanceds: string[];
   zones: string[];

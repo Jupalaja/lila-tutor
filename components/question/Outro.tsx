@@ -28,8 +28,8 @@ export function Outro() {
   };
 
   const handleOnClick = async () => {
-    const { firstName, industry, email, phone, goals, intermediates, advanceds } = state;
-    const dataToSend = { firstName, industry, email, phone, goals, intermediates, advanceds} ;
+    const { name, school, email, phone, basics, intermediates, advanceds } = state;
+    const dataToSend = { name, school, email, phone, basics, intermediates, advanceds} ;
 
     console.log('Sending Data:', dataToSend);
     const success = await postData(dataToSend);

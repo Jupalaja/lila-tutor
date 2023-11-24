@@ -1,9 +1,9 @@
-.dropdown-select__industries {
+.dropdown-select__schools {
   position: relative;
   width: 100%;
 }
 
-.dropdown-select__industries .dropdown-select__input {
+.dropdown-select__schools .dropdown-select__input {
   margin-top: 32px;
   padding-right: 32px;
 }

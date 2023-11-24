@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-export function useIndustries() {
-  const [industries, setIndustries] = useState<string[]>([]);
+export function useSchools() {
+  const [schools, setSchools] = useState<string[]>([]);
 
-  // const industryResourceURL =
-  //   "https://gist.githubusercontent.com/gxt-admin/758c1973293f54322c054bbd8119e80c/raw/7e819e47a60217130347743fd43ae91c3e3e1ede/industries.txt";
+  // const schoolResourceURL =
+  //   "https://gist.githubusercontent.com/gxt-admin/758c1973293f54322c054bbd8119e80c/raw/7e819e47a60217130347743fd43ae91c3e3e1ede/schools.txt";
 
   useEffect(() => {
-    setIndustries([
+    setSchools([
       "Colegio Andino",
       "Colegio Los Nogales",
       "Colegio Helvetia",
@@ -25,14 +25,14 @@ export function useIndustries() {
     ]);
     //   (async function () {
     //     try {
-    //       const response = await fetch(industryResourceURL);
+    //       const response = await fetch(schoolResourceURL);
     //       const data = await response.text();
-    //       setIndustries(data.split("\n"));
+    //       setSchools(data.split("\n"));
     //     } catch (e) {
     //       //
     //     }
     //   })();
   }, []);
 
-  return { industries };
+  return { schools };
 }

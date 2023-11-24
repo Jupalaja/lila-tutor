@@ -50,7 +50,7 @@ export function AdvancedInput() {
       <DropdownSelect 
         className={classNames(
           styles["role-dropdown"],
-          styles["goal-dropdown"],
+          styles["basic-dropdown"],
           {
             [styles["remove-margin__top"]]: chooseNum !== 0,
           }
@@ -66,7 +66,7 @@ export function AdvancedInput() {
                 key={advancedKey}
                 className={classNames(
                   styles["role-option"],
-                  styles["goal-option"],
+                  styles["basic-option"],
                 )}
                 onClick={() => handleDropdownOptionClick(_advanced)}
                 isSelected={isSelected}
@@ -78,7 +78,7 @@ export function AdvancedInput() {
                 >
                   {advancedKey}
                 </span>
-                <span className={styles["goal"]}>{_advanced}</span>
+                <span className={styles["basic"]}>{_advanced}</span>
               </DropdownSelectOption>
             );
           })}

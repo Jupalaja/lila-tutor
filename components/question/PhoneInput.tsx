@@ -18,7 +18,7 @@ export function PhoneInput() {
   const { state, dispatch } = useQuestions();
 
   const errorMsg = error.phone ?? "";
-  const { firstName, phone } = state;
+  const { name, phone } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     errorMsg &&
@@ -34,7 +34,7 @@ export function PhoneInput() {
   return (
     <>
       <QuestionNumHeading questionNum={4}>
-        ¿Cual es tu numero de telefono, {firstName.split(" ")[0]}?  
+        ¿Cual es tu numero de telefono, {name.split(" ")[0]}?  
       </QuestionNumHeading>
 
       <QuestionInputNumber

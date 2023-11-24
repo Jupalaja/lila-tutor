@@ -23,8 +23,8 @@ export type SharedStatesContextType = {
   readonly setQuestionNum: Dispatch<SetStateAction<QuestionNumType>>;
   readonly errorMsg: ObjectType;
   readonly setErrorMsg: Dispatch<SetStateAction<ObjectType>>;
-  readonly showIndustriesList: boolean;
-  readonly setShowIndustriesList: Dispatch<SetStateAction<boolean>>;
+  readonly showSchoolsList: boolean;
+  readonly setShowSchoolsList: Dispatch<SetStateAction<boolean>>;
   readonly handleQuestionNumUpdate: () => void;
   readonly handleOkClick: () => void;
 };

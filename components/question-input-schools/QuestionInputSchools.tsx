@@ -3,10 +3,10 @@ import {
   DropdownSelectOption,
   QuestionInputText,
 } from "../index";
-import styles from "./QuestionInputIndustries.module.css";
+import styles from "./QuestionInputSchools.module.css";
 import classNames from "classnames";
 import Image from "next/image";
-import { useIndustries } from "@/hooks";
+import { useSchools } from "@/hooks";
 import {
   ChangeEvent,
   Dispatch,
@@ -16,40 +16,40 @@ import {
   useRef,
   useState,
 } from "react";
-import { SET_INDUSTRY } from "@/reducers";
+import { SET_SCHOOL } from "@/reducers";
 import { useQuestions, useSharedStates } from "@/contexts";
-import { IndustriesProps, ObjectType } from "@/types";
+import { SchoolsProps, ObjectType } from "@/types";
 
-type QuestionInputIndustriesProps = IndustriesProps & {
+type QuestionInputSchoolsProps = SchoolsProps & {
   readonly setErrorMsg: Dispatch<SetStateAction<ObjectType>> | undefined;
 };
 
-export function QuestionInputIndustries({
-  showIndustriesList,
-  setShowIndustriesList,
+export function QuestionInputSchools({
+  showSchoolsList,
+  setShowSchoolsList,
   setErrorMsg,
-}: QuestionInputIndustriesProps) {
-  const { industries } = useIndustries();
+}: QuestionInputSchoolsProps) {
+  const { schools } = useSchools();
   const { state, dispatch } = useQuestions();
   const { handleOkClick } = useSharedStates();
 
-  const { industry } = state;
+  const { school } = state;
   const inputTextRef = useRef<HTMLInputElement>(null);
-  const [localIndustry, setLocalIndustry] = useState(industry);
+  const [localSchool, setLocalSchool] = useState(school);
   const [optionClicked, setOptionClicked] = useState(false);
-  const [filterIndustries, setFilteredIndustries] = useState<string[]>([]);
+  const [filterSchools, setFilteredSchools] = useState<string[]>([]);
 
   useEffect(() => {
     if (optionClicked) {
       return;
     }
 
-    setFilteredIndustries(
-      industries.filter((_industry) =>
-        _industry.toLowerCase().includes(localIndustry.toLowerCase())
+    setFilteredSchools(
+      schools.filter((_school) =>
+        _school.toLowerCase().includes(localSchool.toLowerCase())
       )
     );
-  }, [industries, localIndustry, optionClicked]);
+  }, [schools, localSchool, optionClicked]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -59,96 +59,96 @@ export function QuestionInputIndustries({
 
   useEffect(() => {
     if (
-      localIndustry &&
-      filterIndustries.length === 0 &&
-      industry !== localIndustry
+      localSchool &&
+      filterSchools.length === 0 &&
+      school !== localSchool
     ) {
       setErrorMsg &&
         setErrorMsg((prevValue) => ({
           ...prevValue,
-          industry: "No suggestions found",
+          school: "No suggestions found",
         }));
     } else {
       setErrorMsg &&
         setErrorMsg((prevValue) => {
-          delete prevValue.industry;
+          delete prevValue.school;
           return prevValue;
         });
     }
-  }, [filterIndustries.length, industry, localIndustry, setErrorMsg]);
+  }, [filterSchools.length, school, localSchool, setErrorMsg]);
 
   function handleDropdownClick(event: MouseEvent) {
     event.stopPropagation();
-    setShowIndustriesList(true);
+    setShowSchoolsList(true);
   }
 
   function handleInputChange(event: ChangeEvent) {
     const typedValue = (event.target as HTMLInputElement).value;
-    dispatch({ type: SET_INDUSTRY, payload: "" });
+    dispatch({ type: SET_SCHOOL, payload: "" });
 
     if (typedValue) {
-      setShowIndustriesList(true);
+      setShowSchoolsList(true);
     } else {
-      setShowIndustriesList(false);
+      setShowSchoolsList(false);
     }
 
-    setLocalIndustry(typedValue);
+    setLocalSchool(typedValue);
   }
 
   function handleUpArrowClick(event: MouseEvent) {
-    if (showIndustriesList) {
+    if (showSchoolsList) {
       event.stopPropagation();
-      setShowIndustriesList(false);
+      setShowSchoolsList(false);
     }
   }
 
   function handleCrossBtnClick(event: MouseEvent) {
     event.stopPropagation();
-    setLocalIndustry("");
-    setShowIndustriesList(false);
-    dispatch({ type: SET_INDUSTRY, payload: "" });
+    setLocalSchool("");
+    setShowSchoolsList(false);
+    dispatch({ type: SET_SCHOOL, payload: "" });
     inputTextRef.current?.focus();
   }
 
-  function handleDropdownOptionClick(_industry: string) {
-    setLocalIndustry(_industry);
+  function handleDropdownOptionClick(_school: string) {
+    setLocalSchool(_school);
     setOptionClicked(true);
 
     setTimeout(function () {
       setErrorMsg &&
         setErrorMsg((prevValue) => {
-          delete prevValue.industry;
+          delete prevValue.school;
           return prevValue;
         });
 
       setOptionClicked(false);
-      dispatch({ type: SET_INDUSTRY, payload: _industry });
-      setShowIndustriesList(false);
+      dispatch({ type: SET_SCHOOL, payload: _school });
+      setShowSchoolsList(false);
       setTimeout(() => handleOkClick(), 600);
     }, 500);
   }
 
   return (
     <div
-      className={styles["dropdown-select__industries"]}
+      className={styles["dropdown-select__schools"]}
       onClick={handleDropdownClick}
     >
       <QuestionInputText
         className={styles["dropdown-select__input"]}
         placeholder="Type or select an option"
-        value={localIndustry}
+        value={localSchool}
         onChange={handleInputChange}
         ref={inputTextRef}
       />
 
       <button
         className={classNames(styles["dropdown-select__btn"], {
-          [styles["close"]]: !showIndustriesList && !localIndustry,
+          [styles["close"]]: !showSchoolsList && !localSchool,
         })}
-        onClick={localIndustry ? handleCrossBtnClick : handleUpArrowClick}
+        onClick={localSchool ? handleCrossBtnClick : handleUpArrowClick}
       >
         <Image
-          src={localIndustry ? "/close.svg" : "/navigate-next.svg"}
+          src={localSchool ? "/close.svg" : "/navigate-next.svg"}
           alt="dropdown arrow"
           width={26}
           height={26}
@@ -157,17 +157,17 @@ export function QuestionInputIndustries({
 
       <DropdownSelect
         className={classNames(styles["dropdown-select__options"], {
-          [styles["show"]]: showIndustriesList && filterIndustries.length,
+          [styles["show"]]: showSchoolsList && filterSchools.length,
         })}
       >
-        {filterIndustries.map(function (_industry) {
+        {filterSchools.map(function (_school) {
           return (
             <DropdownSelectOption
-              key={_industry}
-              onClick={() => handleDropdownOptionClick(_industry)}
-              isSelected={localIndustry === _industry && optionClicked}
+              key={_school}
+              onClick={() => handleDropdownOptionClick(_school)}
+              isSelected={localSchool === _school && optionClicked}
             >
-              {_industry}
+              {_school}
             </DropdownSelectOption>
           );
         })}
