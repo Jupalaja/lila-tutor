@@ -6,11 +6,11 @@ export function Intro() {
 
   return (
     <>
-      <QuestionBoxHeading>¡Gracias por tu interes en Sherpal!</QuestionBoxHeading>
+      <QuestionBoxHeading>Bienvenido a Sherpal</QuestionBoxHeading>
       <QuestionBoxPara>
-        Queremos conocerte mejor
+        ¡Queremos conocerte mejor!
         <br />
-        Este cuestionario no te tomará mas de 2 minutos!
+        Este cuestionario no te tomará mas de 2 minutos
         <br />
       </QuestionBoxPara>
       <BtnContainer showPressEnter={true} onClick={handleOkClick}>

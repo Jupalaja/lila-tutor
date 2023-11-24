@@ -6,6 +6,12 @@ import {
   SET_ROLE,
   SET_GOALS,
   REMOVE_GOAL,
+  SET_INDERMEDIATES,
+  REMOVE_INDERMEDIATE,
+  SET_ADVANCEDS,
+  REMOVE_ADVANCED,
+  SET_ZONES,
+  REMOVE_ZONE,
   SET_DAYS,
   REMOVE_DAY,
   SET_TIMES,
@@ -36,6 +42,33 @@ export function questionsReducerFunc(
       return {
         ...state,
         goals: state.goals.filter((goal) => goal !== action.payload),
+      };
+    
+    case SET_INDERMEDIATES:
+      return { ...state, indermediates: [...state.indermediates, action.payload] };
+
+    case REMOVE_INDERMEDIATE:
+      return {
+        ...state,
+        indermediates: state.indermediates.filter((indermediate) => indermediate !== action.payload),
+      };
+
+    case SET_ADVANCEDS:
+      return { ...state, advanceds: [...state.advanceds, action.payload] };
+
+    case REMOVE_ADVANCED:
+      return {
+        ...state,
+        advanceds: state.advanceds.filter((advanced) => advanced !== action.payload),
+      };
+
+    case SET_ZONES:
+      return { ...state, zones: [...state.zones, action.payload] };
+
+    case REMOVE_ZONE:
+      return {
+        ...state,
+        zones: state.zones.filter((zone) => zone !== action.payload),
       };
 
     case SET_DAYS:

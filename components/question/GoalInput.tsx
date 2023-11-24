@@ -12,6 +12,7 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
+import { MATERIAS } from '@/constants';
 import { REMOVE_GOAL, SET_GOALS } from "@/reducers";
 
 export function GoalInput() {
@@ -19,15 +20,7 @@ export function GoalInput() {
   const { state, dispatch } = useQuestions();
 
   const errorMsg = error.goals ?? "";
-  const { firstName, role, goals } = state;
-
-  const goalsOptions = useMemo(
-    () =>
-      getGoals(
-        role.toLowerCase().includes("founder") ? "FOUNDER" : "NON_FOUNDER"
-      ),
-    [role]
-  );
+  const { role, goals } = state;
 
   function handleDropdownOptionClick(_goal: string) {
     setErrorMsg &&
@@ -49,14 +42,14 @@ export function GoalInput() {
   return (
     <>
       <QuestionNumHeading questionNum={7}>
-        ¿Que materias puedes enseñar en nivel Básico 
+        ¿Que materias puedes enseñar en nivel Básico
         <br/>Primero a Quinto (1° - 5°)? 
       </QuestionNumHeading>
       <QuestionBoxPara>
          Selecciona todas las materias que puedas enseñar
       </QuestionBoxPara>
 
-      <DropdownSelect
+      <DropdownSelect 
         className={classNames(
           styles["role-dropdown"],
           styles["goal-dropdown"],
@@ -66,8 +59,8 @@ export function GoalInput() {
         )}
       >
         <div>
-          {Object.keys(goalsOptions).map((goalKey) => {
-            const _goal = goalsOptions[goalKey];
+          {Object.keys(MATERIAS).map((goalKey) => {
+            const _goal = MATERIAS[goalKey];
             const isSelected = goals.includes(_goal);
 
             return (

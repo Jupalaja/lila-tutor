@@ -3,6 +3,12 @@ export const SET_INDUSTRY = "SET_INDUSTRY";
 export const SET_ROLE = "SET_ROLE";
 export const SET_GOALS = "SET_GOALS";
 export const REMOVE_GOAL = "REMOVE_GOAL";
+export const SET_INDERMEDIATES = "SET_INDERMEDIATES";
+export const REMOVE_INDERMEDIATE = "REMOVE_INDERMEDIATE";
+export const SET_ADVANCEDS = "SET_ADVANCEDS";
+export const REMOVE_ADVANCED = "REMOVE_ADVANCED";
+export const SET_ZONES = "SET_ZONES";
+export const REMOVE_ZONE = "REMOVE_ZONE";
 export const SET_DAYS = "SET_DAYS";
 export const REMOVE_DAY = "REMOVE_DAY";
 export const SET_TIMES = "SET_TIMES";
@@ -16,7 +22,13 @@ export type QuestionsActionsType =
   | { type: "SET_INDUSTRY"; payload: string; }
   | { type: "SET_ROLE"; payload: string }
   | { type: "SET_GOALS"; payload: string }
-  | { type: "REMOVE_GOAL"; payload: string }
+  | { type: "REMOVE_GOAL"; payload: string }  
+  | { type: "SET_INDERMEDIATES"; payload: string }
+  | { type: "REMOVE_INDERMEDIATE"; payload: string }
+  | { type: "SET_ADVANCEDS"; payload: string }
+  | { type: "REMOVE_ADVANCED"; payload: string }
+  | { type: "SET_ZONES"; payload: string }
+  | { type: "REMOVE_ZONE"; payload: string }
   | { type: "SET_DAYS"; payload: string }
   | { type: "REMOVE_DAY"; payload: string }
   | { type: "SET_TIMES"; payload: string }
