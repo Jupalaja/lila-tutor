@@ -26,8 +26,8 @@ export function Outro() {
   };
 
   const handleOnClick = async () => {
-    const { name, school, email, phone, basics, intermediates, advanceds } = state;
-    const dataToSend = { name, school, email, phone, basics, intermediates, advanceds} ;
+    const { name, school, email, phone, basics, intermediates, advanceds, zones} = state;
+    const dataToSend = { name, school, email, phone, basics, intermediates, advanceds, zones} ;
 
     console.log('Sending Data:', dataToSend);
     const success = await postData(dataToSend);
@@ -43,7 +43,7 @@ export function Outro() {
     <>
       <QuestionBoxHeading>Gracias {name.split(" ")[0]}!</QuestionBoxHeading>
       <QuestionBoxPara>
-        Te contactaremos para continuar el proceso!
+        ¡Estas listo para recibir tutorias!
       </QuestionBoxPara>
       <BtnContainer
         showPressEnter={false}

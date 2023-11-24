@@ -23,12 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   type ReqBody = {
     name: string;
     school: string;
-    role: string;
-    basics: string[];
-    days: string[];
-    times: string[];
+    email: string;
     phone: string;
-    type: string;
+    basics: string[];
+    intermediates: string[];
+    advanceds: string[];
+    zones: string[];
   };
 
   if (req.method === 'POST') {
@@ -37,41 +37,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const client = await authenticate();
       const sheets = google.sheets({ version: 'v4', auth: client });
 
-      const basics = body.basics.join(', ');
-      const days = body.days.join(', ');
-      const times = body.times.join(', ');
+      const basics = body.basics?.join(', ') ?? '';
+      const intermediates = body.intermediates?.join(', ') ?? '';
+      const advanceds = body.advanceds?.join(', ') ?? '';
+      const zones = body.zones?.join(', ') ?? '';
 
-      const googleSheetData = [body.name, body.school, body.role, basics, days, times, body.type, body.phone];
+      const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Sheet1',
+        range: 'Materias',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
       const response = await sheets.spreadsheets.values.append(googleSheetRequest);
 
-      const iftttData = {
-        Nombre: body.name,
-        Colegio: body.school,
-        Nivel: body.role,
-        Materias: body.basics,
-        Dias: body.days,
-        Horas: body.times,
-        Tipo: body.type,
-        Telefono: body.phone,
-      };
-      const iftttResponse = await fetch('https://maker.ifttt.com/trigger/lila/json/with/key/b2Y4VhUq8WCp1CaaK-D91t', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(iftttData),
-      });
-
-      if (response.status === 200 && iftttResponse.ok) {
+      if (response.status === 200) {
         res.status(200).json({ message: "Data processed and sent successfully to both Google Sheets and IFTTT." });
       } else {
-        // Possible improvement: Add more specific error messages depending on which request failed
         throw new Error('An error occurred while processing and sending the data.');
       }
     } catch (error) {

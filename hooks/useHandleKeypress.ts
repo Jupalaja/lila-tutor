@@ -9,7 +9,7 @@ export function useHandleKeypress() {
 
   const { now } = questionNum;
   const { state } = useQuestions();
-  const { name, school, email, phone, basics, intermediates, advanceds } = state;
+  const { name, school, email, phone, basics, intermediates, advanceds, zones} = state;
 
   useEffect(() => {
     function handleKeypress(event: KeyboardEvent) {
@@ -72,6 +72,7 @@ export function useHandleKeypress() {
           }));
           return;       
         }
+        
         handleQuestionNumUpdate();
       }
     }
