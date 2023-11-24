@@ -3,9 +3,7 @@ import { ChangeEventHandler } from "react";
 import {
   BtnContainer,
   Error,
-  QuestionInputText,
   QuestionNumHeading,
-  QuestionBoxPara,
   QuestionInputNumber
 } from "../index";
 import classNames from "classnames";

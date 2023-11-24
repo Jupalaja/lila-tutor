@@ -28,7 +28,7 @@ export function SchoolInput() {
         ¿De que colegio te graduaste, {name.split(" ")[0]}?
       </QuestionNumHeading>
 
-      <QuestionBoxPara>Selecciona un Colegio de la lista</QuestionBoxPara>
+      <QuestionBoxPara>Ingresa &apos;Otro&apos; en caso de no encontrar tu colegio en la lista</QuestionBoxPara>
 
       <QuestionInputSchools
         showSchoolsList={showSchoolsList}

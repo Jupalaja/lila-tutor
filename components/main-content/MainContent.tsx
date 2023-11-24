@@ -107,12 +107,22 @@ export function MainContent() {
           />
         )}
 
-        {prev === 7 && [now - 1, now, now + 1].includes(8) && (
+        {[7, 9].includes(prev ?? 0) && [now - 1, now, now + 1].includes(8) && (
           <Question
-            type="outro"
+            type="zone"
             outView={[now - 1, now + 1].includes(8)}
             outViewSlide={now - 1 === 8 ? "up" : "down"}
             inView={now === 8}
+            inViewSlide={prev === 9 ? "down" : "up"}
+          />
+        )}
+
+        {prev === 8 && [now - 1, now, now + 1].includes(9) && (
+          <Question
+            type="outro"
+            outView={[now - 1, now + 1].includes(9)}
+            outViewSlide={now - 1 === 9 ? "up" : "down"}
+            inView={now === 9}
             inViewSlide={"up"}
           />
         )}

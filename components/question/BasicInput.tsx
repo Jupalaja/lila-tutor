@@ -10,7 +10,7 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { MATERIAS } from '@/constants';
+import { COURSES } from '@/constants';
 import { REMOVE_BASIC, SET_BASICS } from "@/reducers";
 
 export function BasicInput() {
@@ -35,8 +35,6 @@ export function BasicInput() {
     }
   }
 
-  const chooseNum = 2 - basics.length;
-
   return (
     <>
       <QuestionNumHeading questionNum={7}>
@@ -49,24 +47,24 @@ export function BasicInput() {
 
       <DropdownSelect 
         className={classNames(
-          styles["role-dropdown"],
-          styles["basic-dropdown"],
+          styles["first-dropdown"],
+          styles["second-dropdown"],
           {
-            [styles["remove-margin__top"]]: chooseNum !== 0,
+            [styles["remove-margin__top"]]: basics.length !== 0,
           }
         )}
       >
         <div>
-          {Object.keys(MATERIAS).map((basicKey) => {
-            const _basic = MATERIAS[basicKey];
+          {Object.keys(COURSES).map((basicKey) => {
+            const _basic = COURSES[basicKey];
             const isSelected = basics.includes(_basic);
 
             return (
               <DropdownSelectOption
                 key={basicKey}
                 className={classNames(
-                  styles["role-option"],
-                  styles["basic-option"],
+                  styles["first-option"],
+                  styles["second-option"],
                 )}
                 onClick={() => handleDropdownOptionClick(_basic)}
                 isSelected={isSelected}
@@ -78,7 +76,7 @@ export function BasicInput() {
                 >
                   {basicKey}
                 </span>
-                <span className={styles["basic"]}>{_basic}</span>
+                <span className={styles["first"]}>{_basic}</span>
               </DropdownSelectOption>
             );
           })}

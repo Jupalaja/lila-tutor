@@ -1,6 +1,6 @@
 import { ObjectType } from "@/types";
 
-export const MATERIAS: ObjectType = {
+export const COURSES: ObjectType = {
   A: "Matemáticas",
   B: "Física",
   C: "Biología",

@@ -6,4 +6,5 @@ export { PhoneInput } from "./PhoneInput";
 export { BasicInput } from "./BasicInput";
 export { IntermediateInput } from "./IntermediateInput";
 export { AdvancedInput } from "./AdvancedInput";
+export { ZoneInput } from "./ZoneInput";
 export { Outro } from "./Outro";

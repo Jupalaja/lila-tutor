@@ -1,14 +1,12 @@
-// ./components/question/Outro.tsx
 import { useState } from 'react';
 import { QuestionBoxHeading, QuestionBoxPara, BtnContainer } from '../index';
 import { useQuestions } from "@/contexts";
-//TODO:FIX import styles from './Outro.module.css'; // make sure to import the styles
 
 export function Outro() {
   const { state } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
   const [buttonClass, setButtonClass] = useState('');
-  const [paraClass, setParaClass] = useState('');
+  const { name } = state;
 
   const postData = async (data: any) => {
     try {
@@ -43,7 +41,7 @@ export function Outro() {
 
   return (
     <>
-      <QuestionBoxHeading>Gracias!</QuestionBoxHeading>
+      <QuestionBoxHeading>Gracias {name.split(" ")[0]}!</QuestionBoxHeading>
       <QuestionBoxPara>
         Te contactaremos para continuar el proceso!
       </QuestionBoxPara>

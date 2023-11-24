@@ -10,6 +10,7 @@ import {
   EmailInput,
   IntermediateInput,
   AdvancedInput,
+  ZoneInput,
 
 } from "./index";
 import styles from "./Question.module.css";
@@ -42,6 +43,7 @@ export function Question({
       {type === "basic" && <BasicInput />}
       {type === "intermediate" && <IntermediateInput />}
       {type === "advanced" && <AdvancedInput />}
+      {type === "zone" && <ZoneInput />}
       {type == "outro"  && <Outro />}
     </div>
   );

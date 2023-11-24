@@ -20,24 +20,24 @@
   right: 5px;
 }
 
-/***** role-dropdown *****/
+/***** first-dropdown *****/
 
-.role-dropdown {
+.first-dropdown {
   display: inline-flex;
   margin-top: 30px;
 }
 
-.role-dropdown .role-option {
+.first-dropdown .first-option {
   margin-top: 10px;
   max-width: 100%;
   min-width: 225px;
 }
 
-.role-option > img {
+.first-option > img {
   margin-right: -8px;
 }
 
-.role-option > span:not(.basic) {
+.first-option > span:not(.first) {
   align-items: center;
   background-color: var(--body-background-color);
   border: thin solid var(--para-text-color);
@@ -52,22 +52,22 @@
   width: 24px;
 }
 
-.role-option > span:not(.basic).selected {
+.first-option > span:not(.first).selected {
   background-color: var(--btn-text-color);
   color: var(--body-background-color);
 }
 
-/***** basic-option *****/
+/***** second-option *****/
 
-.role-dropdown.basic-dropdown.remove-margin__top {
+.first-dropdown.second-dropdown.remove-margin__top {
   margin-top: 0;
 }
 
-.role-dropdown.basic-dropdown > div {
+.first-dropdown.second-dropdown > div {
   width: 38rem;
 }
 
-.basic-option.not-selected {
+.second-option.not-selected {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -91,22 +91,22 @@
 }
 
 @media screen and (max-width: 403px) {
-  .role-dropdown.basic-dropdown > div {
+  .first-dropdown.second-dropdown > div {
     width: 36rem;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .role-dropdown.basic-dropdown > div {
+  .first-dropdown.second-dropdown > div {
     width: 100%;
   }
 
-  .basic-option > span:not(.basic) {
+  .second-option > span:not(.first) {
     align-self: flex-start;
     margin-top: 7.5px;
   }
 
-  .basic-option > .basic {
+  .second-option > .first {
     display: block;
     line-height: 1.25em;
     padding: 6px 0;
@@ -115,7 +115,7 @@
 }
 
 @media screen and (max-width: 368px) {
-  .basic-option > .basic {
+  .second-option > .first {
     width: 23rem;
   }
 }

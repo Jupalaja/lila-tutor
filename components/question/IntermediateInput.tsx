@@ -10,7 +10,7 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { MATERIAS } from '@/constants';
+import { COURSES } from '@/constants';
 import { REMOVE_INTERMEDIATE, SET_INTERMEDIATES } from "@/reducers";
 
 export function IntermediateInput() {
@@ -35,8 +35,6 @@ export function IntermediateInput() {
     }
   }
 
-  const chooseNum = 2 - intermediates.length;
-
   return (
     <>
       <QuestionNumHeading questionNum={8}>
@@ -49,24 +47,24 @@ export function IntermediateInput() {
 
       <DropdownSelect 
         className={classNames(
-          styles["role-dropdown"],
-          styles["basic-dropdown"],
+          styles["first-dropdown"],
+          styles["second-dropdown"],
           {
-            [styles["remove-margin__top"]]: chooseNum !== 0,
+            [styles["remove-margin__top"]]: intermediates.length !== 0,
           }
         )}
       >
         <div>
-          {Object.keys(MATERIAS).map((intermediateKey) => {
-            const _intermediate = MATERIAS[intermediateKey];
+          {Object.keys(COURSES).map((intermediateKey) => {
+            const _intermediate = COURSES[intermediateKey];
             const isSelected = intermediates.includes(_intermediate);
 
             return (
               <DropdownSelectOption
                 key={intermediateKey}
                 className={classNames(
-                  styles["role-option"],
-                  styles["basic-option"],
+                  styles["first-option"],
+                  styles["second-option"],
                 )}
                 onClick={() => handleDropdownOptionClick(_intermediate)}
                 isSelected={isSelected}
@@ -78,7 +76,7 @@ export function IntermediateInput() {
                 >
                   {intermediateKey}
                 </span>
-                <span className={styles["basic"]}>{_intermediate}</span>
+                <span className={styles["first"]}>{_intermediate}</span>
               </DropdownSelectOption>
             );
           })}
