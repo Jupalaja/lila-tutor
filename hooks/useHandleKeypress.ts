@@ -9,7 +9,7 @@ export function useHandleKeypress() {
 
   const { now } = questionNum;
   const { state } = useQuestions();
-  const { firstName, industry, role, goals, days, times, phone, email, type } = state;
+  const { firstName, industry, email, phone, goals, intermediates, advanceds } = state;
 
   useEffect(() => {
     function handleKeypress(event: KeyboardEvent) {
@@ -51,38 +51,27 @@ export function useHandleKeypress() {
           }));
           return;
 
-
-        // } else if (now + 1 === 4 && role === "") {
-        //   setErrorMsg((prevValue) => ({
-        //     ...prevValue,
-        //     role: "Por favor selecciona una opción",
-        //   }));
-        //   return;
-
         } else if (now + 1 === 6 && goals.length === 0) {
           setErrorMsg((prevValue) => ({
             ...prevValue,
             goals: "Por favor selecciona una opción",
           }));
           return;
-
-        } else if (now + 1 === 7 && type === "") {
-          setErrorMsg((prevValue) => ({
-            ...prevValue,
-            type: "Por favor selecciona una opción",
-          }));
-          return;
-
-        } else if (now + 1 === 8 && email === "") {
-          setErrorMsg((prevValue) => ({
-            ...prevValue,
-            email: "Por favor llena este campo",
-          }));
-          return;
-        }
-
         
-
+        } else if (now + 1 === 7 && intermediates.length === 0) {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            goals: "Por favor selecciona una opción",
+          }));
+          return;
+        
+        } else if (now + 1 === 8 && advanceds.length === 0) {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            goals: "Por favor selecciona una opción",
+          }));
+          return;       
+        }
         handleQuestionNumUpdate();
       }
     }
@@ -94,5 +83,5 @@ export function useHandleKeypress() {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstName, industry, days, times, phone, now, role, goals, email, type]);
+  }, [firstName, industry, email, now, phone, goals, intermediates, advanceds ]);
 }

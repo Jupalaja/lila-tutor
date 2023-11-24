@@ -29,19 +29,15 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
   const percent = useMemo(
     function () {
       let answeredQues = 0;
-      const { firstName, industry, role, goals, days, times, phone , type, email} = state;
+      const { firstName, industry, email, phone, goals, intermediates, advanceds } = state;
 
       if (firstName) answeredQues += 1;
       if (industry) answeredQues += 1;
-      if(email) answeredQues += 1;
+      if (email) answeredQues += 1;
       if (phone) answeredQues += 1;
-
-      if (role) answeredQues += 1;
       if (goals.length !== 0) answeredQues += 1;
-      if (days.length !== 0) answeredQues += 1;
-      if (times.length !== 0) answeredQues += 1;
-      if( type ) answeredQues += 1;
-      if (phone) answeredQues += 1;
+      if (intermediates.length !== 0) answeredQues += 1;
+      if (advanceds.length !== 0) answeredQues += 1;
       
       return (answeredQues * 100) / TOTAL_QUESTIONS;
     },

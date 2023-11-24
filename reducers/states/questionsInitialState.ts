@@ -3,7 +3,7 @@ export const questionsInitialState = {
   industry: "",
   role: "",
   goals: [],
-  indermediates: [],
+  intermediates: [],
   advanceds: [],
   zones: [],
   days: [],
@@ -16,9 +16,9 @@ export const questionsInitialState = {
 export type QuestionsStateType = {
   firstName: string;
   industry: string;
-  role: string;
-  goals: string[];
-  indermediates: string[];
+  role: string; 
+  goals: string[];    
+  intermediates : string[];
   advanceds: string[];
   zones: string[];
   days: string[];

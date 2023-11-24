@@ -10,17 +10,13 @@ export type QuestionProps = {
     | "intro"
     | "firstName"
     | "industry"
-    | "role"
+    | "email"
+    | "phone"
     | "goal"
     | "intermediate"
     | "advanced"
     | "zone"
-    | "day"
-    | "time"
-    | "phone"
-    | "email"
-    | "outro"
-    | "type";
+    | "outro";
 
 };
 

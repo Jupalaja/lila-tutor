@@ -2,13 +2,15 @@ import { QuestionProps } from "@/types";
 import classNames from "classnames";
 import {
   FirstNameInput,
-  GoalInput,
+  BasicInput,
   IndustryInput,
   Intro,
   PhoneInput,
   Outro,
-  TypeInput,
   EmailInput,
+  IntermediateInput,
+  AdvancedInput,
+
 } from "./index";
 import styles from "./Question.module.css";
 
@@ -37,9 +39,9 @@ export function Question({
       {type === "industry" && <IndustryInput />}
       {type === "email" && <EmailInput />}
       {type === "phone" && <PhoneInput />}
-      {type === "goal" && <GoalInput />}
-      {type === "type" && <TypeInput />}
-      {/* {type === "email" && <EmailInput />} */}
+      {type === "goal" && <BasicInput />}
+      {type === "intermediate" && <IntermediateInput />}
+      {type === "advanced" && <AdvancedInput />}
       {type == "outro"  && <Outro />}
     </div>
   );

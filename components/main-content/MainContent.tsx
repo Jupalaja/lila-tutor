@@ -89,7 +89,7 @@ export function MainContent() {
 
         {[5, 7].includes(prev ?? 0) && [now - 1, now, now + 1].includes(6) && (
           <Question
-            type="type"
+            type="intermediate"
             outView={[now - 1, now + 1].includes(6)}
             outViewSlide={now - 1 === 6 ? "up" : "down"}
             inView={now === 6}
@@ -97,12 +97,22 @@ export function MainContent() {
           />
         )}
 
-        {prev === 6 && [now - 1, now, now + 1].includes(7) && (
+        {[6, 8].includes(prev ?? 0) && [now - 1, now, now + 1].includes(7) && (
           <Question
-            type="outro"
+            type="advanced"
             outView={[now - 1, now + 1].includes(7)}
             outViewSlide={now - 1 === 7 ? "up" : "down"}
             inView={now === 7}
+            inViewSlide={prev === 8 ? "down" : "up"}
+          />
+        )}
+
+        {prev === 7 && [now - 1, now, now + 1].includes(8) && (
+          <Question
+            type="outro"
+            outView={[now - 1, now + 1].includes(8)}
+            outViewSlide={now - 1 === 8 ? "up" : "down"}
+            inView={now === 8}
             inViewSlide={"up"}
           />
         )}

@@ -1,6 +1,4 @@
 import { useQuestions, useSharedStates } from "@/contexts";
-import { getGoals } from "@/utils";
-import { useMemo } from "react";
 import {
   BtnContainer,
   DropdownSelect,
@@ -13,37 +11,37 @@ import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
 import { MATERIAS } from '@/constants';
-import { REMOVE_GOAL, SET_GOALS } from "@/reducers";
+import { REMOVE_ADVANCED, SET_ADVANCEDS } from "@/reducers";
 
-export function GoalInput() {
+export function AdvancedInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.goals ?? "";
-  const { role, goals } = state;
+  const errorMsg = error.advanced ?? "";
+  const { advanceds } = state;
 
-  function handleDropdownOptionClick(_goal: string) {
+  function handleDropdownOptionClick(_advanced: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.goals;
+        delete prevValue.advanceds;
         return prevValue;
       });
 
-    if (goals.includes(_goal)) {
-      dispatch({ type: REMOVE_GOAL, payload: _goal });
+    if (advanceds.includes(_advanced)) {
+      dispatch({ type: REMOVE_ADVANCED, payload: _advanced });
     } else {
-      dispatch({ type: SET_GOALS, payload: _goal });
+      dispatch({ type: SET_ADVANCEDS, payload: _advanced });
 
     }
   }
 
-  const chooseNum = 2 - goals.length;
+  const chooseNum = 2 - advanceds.length;
 
   return (
     <>
-      <QuestionNumHeading questionNum={7}>
-        ¿Que materias puedes enseñar en nivel Básico
-        <br/>Primero a Quinto (1° - 5°)? 
+      <QuestionNumHeading questionNum={9}>
+        ¿Que materias puedes enseñar en nivel Intermedio
+        [Quinto a octavo (5° - 8°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>
          Selecciona todas las materias que puedas enseñar
@@ -59,18 +57,18 @@ export function GoalInput() {
         )}
       >
         <div>
-          {Object.keys(MATERIAS).map((goalKey) => {
-            const _goal = MATERIAS[goalKey];
-            const isSelected = goals.includes(_goal);
+          {Object.keys(MATERIAS).map((advancedKey) => {
+            const _advanced = MATERIAS[advancedKey];
+            const isSelected = advanceds.includes(_advanced);
 
             return (
               <DropdownSelectOption
-                key={goalKey}
+                key={advancedKey}
                 className={classNames(
                   styles["role-option"],
                   styles["goal-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_goal)}
+                onClick={() => handleDropdownOptionClick(_advanced)}
                 isSelected={isSelected}
               >
                 <span
@@ -78,9 +76,9 @@ export function GoalInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {goalKey}
+                  {advancedKey}
                 </span>
-                <span className={styles["goal"]}>{_goal}</span>
+                <span className={styles["goal"]}>{_advanced}</span>
               </DropdownSelectOption>
             );
           })}

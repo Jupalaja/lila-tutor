@@ -11,8 +11,8 @@ import Image from "next/image";
 import { useQuestions, useSharedStates } from "@/contexts";
 
 export function IndustryInput() {
-  const { state, dispatch } = useQuestions();
-  const { firstName, role, goals } = state;
+  const { state } = useQuestions();
+  const { firstName } = state;
   const {
     showIndustriesList,
     setShowIndustriesList,

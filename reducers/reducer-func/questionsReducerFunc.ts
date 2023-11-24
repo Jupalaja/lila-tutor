@@ -3,22 +3,16 @@ import {
   QuestionsStateType,
   SET_FIRST_NAME,
   SET_INDUSTRY,
-  SET_ROLE,
   SET_GOALS,
   REMOVE_GOAL,
-  SET_INDERMEDIATES,
-  REMOVE_INDERMEDIATE,
+  SET_INTERMEDIATES,
+  REMOVE_INTERMEDIATE,
   SET_ADVANCEDS,
   REMOVE_ADVANCED,
   SET_ZONES,
   REMOVE_ZONE,
-  SET_DAYS,
-  REMOVE_DAY,
-  SET_TIMES,
-  REMOVE_TIME,
   SET_PHONE,
   SET_EMAIL,
-  SET_TYPE,
 } from "../index";
 
 export function questionsReducerFunc(
@@ -32,9 +26,6 @@ export function questionsReducerFunc(
     case SET_INDUSTRY:
       return { ...state, industry: action.payload };
 
-    case SET_ROLE:
-      return { ...state, role: action.payload };
-
     case SET_GOALS:
       return { ...state, goals: [...state.goals, action.payload] };
 
@@ -43,14 +34,21 @@ export function questionsReducerFunc(
         ...state,
         goals: state.goals.filter((goal) => goal !== action.payload),
       };
-    
-    case SET_INDERMEDIATES:
-      return { ...state, indermediates: [...state.indermediates, action.payload] };
 
-    case REMOVE_INDERMEDIATE:
+    case SET_PHONE:
+      return { ...state, phone: action.payload };
+        
+    case SET_EMAIL:
+      return { ...state, email: action.payload };
+
+    
+    case SET_INTERMEDIATES:
+      return { ...state, intermediates: [...state.intermediates, action.payload] };
+
+    case REMOVE_INTERMEDIATE:
       return {
         ...state,
-        indermediates: state.indermediates.filter((indermediate) => indermediate !== action.payload),
+        intermediates: state.intermediates.filter((intermediate) => intermediate !== action.payload),
       };
 
     case SET_ADVANCEDS:
@@ -70,33 +68,6 @@ export function questionsReducerFunc(
         ...state,
         zones: state.zones.filter((zone) => zone !== action.payload),
       };
-
-    case SET_DAYS:
-      return { ...state, days: [...state.days, action.payload] };
-
-    case REMOVE_DAY:
-      return {
-        ...state,
-        days: state.days.filter((day) => day !== action.payload),
-      };
-
-    case SET_TIMES:
-      return { ...state, times: [...state.times, action.payload] };
-    
-    case REMOVE_TIME:
-      return {
-        ...state,
-        times: state.times.filter((time) => time !== action.payload),
-      };
-
-    case SET_PHONE:
-      return { ...state, phone: action.payload };
-      
-    case SET_EMAIL:
-      return { ...state, email: action.payload };
-
-    case SET_TYPE:
-      return { ...state, type: action.payload };
 
     default:
       return state;
