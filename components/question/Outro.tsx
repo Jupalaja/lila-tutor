@@ -43,7 +43,7 @@ export function Outro() {
     <>
       <QuestionBoxHeading>Gracias {name.split(" ")[0]}!</QuestionBoxHeading>
       <QuestionBoxPara>
-        ¡Estas listo para recibir tutorias!
+        ¡Estás listo para recibir tutorías!
       </QuestionBoxPara>
       <BtnContainer
         showPressEnter={false}

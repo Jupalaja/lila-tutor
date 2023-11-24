@@ -32,7 +32,7 @@ export function NameInput() {
   return (
     <>
       <QuestionNumHeading questionNum={1}>
-        ¿Cual es tu nombre? 
+        ¿Cuál es tu nombre? 
       </QuestionNumHeading>
 
       <QuestionInputText

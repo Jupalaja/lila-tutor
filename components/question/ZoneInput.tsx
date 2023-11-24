@@ -38,7 +38,7 @@ export function ZoneInput() {
   return (
     <>
       <QuestionNumHeading questionNum={10}>
-        ¿En que zonas puedes dar clases presenciales?
+        ¿En qué zonas puedes dar clases presenciales?
       </QuestionNumHeading>
       <QuestionBoxPara>
         Deja este campo vacio si sólo puedes dar clases virtuales

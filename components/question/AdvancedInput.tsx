@@ -40,8 +40,8 @@ export function AdvancedInput() {
   return (
     <>
       <QuestionNumHeading questionNum={9}>
-        ¿Que materias puedes enseñar en nivel Intermedio
-        [Quinto a octavo (5° - 8°)]? 
+        ¿Qué materias puedes enseñar en nivel avanzado
+        [Noveno a Doce (9° - 12°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>
          Selecciona todas las materias que puedas enseñar

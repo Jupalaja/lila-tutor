@@ -38,7 +38,7 @@ export function IntermediateInput() {
   return (
     <>
       <QuestionNumHeading questionNum={8}>
-        ¿Que materias puedes enseñar en nivel Intermedio
+        ¿Qué materias puedes enseñar en nivel intermedio
         [Quinto a octavo (5° - 8°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>

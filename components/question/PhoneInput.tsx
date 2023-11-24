@@ -32,11 +32,11 @@ export function PhoneInput() {
   return (
     <>
       <QuestionNumHeading questionNum={4}>
-        ¿Cual es tu numero de telefono, {name.split(" ")[0]}?  
+        ¿Cuál es tu número de teléfono, {name.split(" ")[0]}?  
       </QuestionNumHeading>
 
       <QuestionInputNumber
-        placeholder="Telefono..."
+        placeholder="Teléfono..."
         value={phone}
         onChange={handleInputChange}
       />
