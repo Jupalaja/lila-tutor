@@ -1,13 +1,21 @@
 .dropdown-select__options {
   background-color: var(--body-background-color);
   margin-top: 8px;
-  max-height: 50vh; /* Limit the height to 50% of the viewport height */
+  max-height: 30vh; /* Limit the height to 50% of the viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
+  -webkit-overflow-scrolling: touch;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dropdown-select__options::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 599px) {
   .time-dropdown-wrapper {
-    max-height: 60vh; /* Adjust this as needed for the best appearance on mobile */
+    max-height: 50vh; /* Adjust this as needed for the best appearance on mobile */
   }
   /* Other mobile-specific style adjustments */
 }

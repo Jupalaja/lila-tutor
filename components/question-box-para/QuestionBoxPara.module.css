@@ -6,6 +6,15 @@
   margin-top: 12px;
 }
 
+/***** External-links *****/
+
+.question-box__para a {
+  color: #FFF;
+  background-color: #171717;
+  border: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
 @media screen and (max-width: 599px) {
   .question-box__para {
     font-size: 1.9rem;

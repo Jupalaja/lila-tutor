@@ -3,6 +3,9 @@
 # text files
 output.txt 
 
+# script files
+tree_script.sh
+
 # IntelliJIdea
 .idea/
 

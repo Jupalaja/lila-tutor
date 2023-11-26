@@ -227,3 +227,17 @@
     opacity: 1;
   }
 }
+
+
+/***** succesful Submission *****/
+
+.successfulSubmission > button{
+  background-color: #E0348B;
+  color: var(--body-background-color);
+  transition: background-color 0.5s ease;
+}
+
+.successfulSubmission > button:hover {
+  background-color: #E0348B;
+}
+

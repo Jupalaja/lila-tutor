@@ -10,65 +10,59 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { COURSES } from '@/constants';
-import { REMOVE_ADVANCED, SET_ADVANCEDS } from "@/reducers";
+import { ZONES } from '@/constants';
+import { REMOVE_ZONE, SET_ZONES } from "@/reducers";
 
-export function AdvancedInput() {
+export function ZoneInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.advanced ?? "";
-  const { advanceds } = state;
+  const errorMsg = error.zones ?? "";
+  const { zones } = state;
 
-  function handleDropdownOptionClick(_advanced: string) {
+  function handleDropdownOptionClick(_zone: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.advanceds;
+        delete prevValue.zones;
         return prevValue;
       });
 
-    if (advanceds.includes(_advanced)) {
-      dispatch({ type: REMOVE_ADVANCED, payload: _advanced });
+    if (zones.includes(_zone)) {
+      dispatch({ type: REMOVE_ZONE, payload: _zone });
     } else {
-      dispatch({ type: SET_ADVANCEDS, payload: _advanced });
+      dispatch({ type: SET_ZONES, payload: _zone });
 
     }
   }
 
-  const chooseNum = 2 - advanceds.length;
-
   return (
     <>
-      <QuestionNumHeading questionNum={9}>
-        ¿Qué materias puedes enseñar en nivel avanzado
-        [Noveno a Doce (9° - 12°)]? 
+      <QuestionNumHeading questionNum={10}>
+        ¿En qué zonas puedes dar clases presenciales?
       </QuestionNumHeading>
       <QuestionBoxPara>
-         Selecciona todas las materias que puedas enseñar
+        Deja este campo vacio si sólo puedes dar clases virtuales
       </QuestionBoxPara>
 
       <DropdownSelect 
         className={classNames(
           styles["first-dropdown"],
-          styles["second-dropdown"],
-          {
-            [styles["remove-margin__top"]]: chooseNum !== 0,
-          }
+          styles["second-dropdown"]
         )}
       >
         <div>
-          {Object.keys(COURSES).map((advancedKey) => {
-            const _advanced = COURSES[advancedKey];
-            const isSelected = advanceds.includes(_advanced);
+          {Object.keys(ZONES).map((zoneKey) => {
+            const _zone = ZONES[zoneKey];
+            const isSelected = zones.includes(_zone);
 
             return (
               <DropdownSelectOption
-                key={advancedKey}
+                key={zoneKey}
                 className={classNames(
                   styles["first-option"],
                   styles["second-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_advanced)}
+                onClick={() => handleDropdownOptionClick(_zone)}
                 isSelected={isSelected}
               >
                 <span
@@ -76,9 +70,9 @@ export function AdvancedInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {advancedKey}
+                  {zoneKey}
                 </span>
-                <span className={styles["first"]}>{_advanced}</span>
+                <span className={styles["first"]}>{_zone}</span>
               </DropdownSelectOption>
             );
           })}

@@ -10,62 +10,60 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { ZONES } from '@/constants';
-import { REMOVE_ZONE, SET_ZONES } from "@/reducers";
+import { COURSES } from '@/constants';
+import { REMOVE_BASIC, SET_BASICS } from "@/reducers";
 
-export function ZoneInput() {
+export function BasicInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.zones ?? "";
-  const { zones } = state;
+  const errorMsg = error.basics ?? "";
+  const { basics } = state;
 
-  function handleDropdownOptionClick(_zone: string) {
+  function handleDropdownOptionClick(_basic: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.zones;
+        delete prevValue.basics;
         return prevValue;
       });
 
-    if (zones.includes(_zone)) {
-      dispatch({ type: REMOVE_ZONE, payload: _zone });
+    if (basics.includes(_basic)) {
+      dispatch({ type: REMOVE_BASIC, payload: _basic });
     } else {
-      dispatch({ type: SET_ZONES, payload: _zone });
+      dispatch({ type: SET_BASICS, payload: _basic });
 
     }
   }
 
   return (
     <>
-      <QuestionNumHeading questionNum={10}>
-        ¿En qué zonas puedes dar clases presenciales?
+      <QuestionNumHeading questionNum={7}>
+        ¿Qué materias puedes enseñar en nivel básico
+        [Primero a cuarto (1° - 4°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>
-        Deja este campo vacio si sólo puedes dar clases virtuales
+         Selecciona todas las materias que puedas enseñar
       </QuestionBoxPara>
 
       <DropdownSelect 
         className={classNames(
           styles["first-dropdown"],
-          styles["second-dropdown"],
-          {
-            [styles["remove-margin__top"]]: zones.length === 0,
-          }
+          styles["second-dropdown"]
         )}
       >
         <div>
-          {Object.keys(ZONES).map((zoneKey) => {
-            const _zone = ZONES[zoneKey];
-            const isSelected = zones.includes(_zone);
+          {Object.keys(COURSES).map((basicKey) => {
+            const _basic = COURSES[basicKey];
+            const isSelected = basics.includes(_basic);
 
             return (
               <DropdownSelectOption
-                key={zoneKey}
+                key={basicKey}
                 className={classNames(
                   styles["first-option"],
                   styles["second-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_zone)}
+                onClick={() => handleDropdownOptionClick(_basic)}
                 isSelected={isSelected}
               >
                 <span
@@ -73,9 +71,9 @@ export function ZoneInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {zoneKey}
+                  {basicKey}
                 </span>
-                <span className={styles["first"]}>{_zone}</span>
+                <span className={styles["first"]}>{_basic}</span>
               </DropdownSelectOption>
             );
           })}

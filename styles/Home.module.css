@@ -1,3 +1,9 @@
+
+.successfulSubmission {
+  background-color: #28a745;
+  color: var(--body-background-color);
+}
+
 .header {
   left: 0;
   position: fixed;

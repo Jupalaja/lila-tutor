@@ -11,23 +11,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Typeform</title>
+        <title>Lila Tutor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Typeform built for a take home assignment."
+          content="Formulario de registro para tutores de Sherpal"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
         <ProgressBar width={percent} />
-        {/* <Image
-          //src="/growth-x-logo.png"
-          //alt="GrowthX logo"
-          //width={96}
-         // height={24}
-        // />
-  */}
       </header>
       <main className={classNames(styles.main, questrialFont.className)}>
         <SharedStatesProvider>

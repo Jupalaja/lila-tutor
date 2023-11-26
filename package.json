@@ -1,17 +1,11 @@
 {
-  "name": "forming-typeform",
-  "version": "0.1.0",
+  "name": "lila",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prettier:check": "prettier -c ./",
-    "format": "prettier -w ./",
-    "check": "yarn run format && yarn run prettier:check && yarn run lint",
-    "pre:commit": "yarn run check && git add .",
-    "prepare": "husky install"
+    "start": "next start"
   },
   "dependencies": {
     "@types/node": "18.15.8",

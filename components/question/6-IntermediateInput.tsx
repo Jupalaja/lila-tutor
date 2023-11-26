@@ -11,35 +11,35 @@ import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
 import { COURSES } from '@/constants';
-import { REMOVE_BASIC, SET_BASICS } from "@/reducers";
+import { REMOVE_INTERMEDIATE, SET_INTERMEDIATES } from "@/reducers";
 
-export function BasicInput() {
+export function IntermediateInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.basics ?? "";
-  const { basics } = state;
+  const errorMsg = error.intermediate ?? "";
+  const { intermediates } = state;
 
-  function handleDropdownOptionClick(_basic: string) {
+  function handleDropdownOptionClick(_intermediate: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.basics;
+        delete prevValue.intermediates;
         return prevValue;
       });
 
-    if (basics.includes(_basic)) {
-      dispatch({ type: REMOVE_BASIC, payload: _basic });
+    if (intermediates.includes(_intermediate)) {
+      dispatch({ type: REMOVE_INTERMEDIATE, payload: _intermediate });
     } else {
-      dispatch({ type: SET_BASICS, payload: _basic });
+      dispatch({ type: SET_INTERMEDIATES, payload: _intermediate });
 
     }
   }
 
   return (
     <>
-      <QuestionNumHeading questionNum={7}>
-        ¿Qué materias puedes enseñar en nivel básico
-        [Primero a cuarto (1° - 4°)]? 
+      <QuestionNumHeading questionNum={8}>
+        ¿Qué materias puedes enseñar en nivel intermedio
+        [Quinto a octavo (5° - 8°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>
          Selecciona todas las materias que puedas enseñar
@@ -48,25 +48,22 @@ export function BasicInput() {
       <DropdownSelect 
         className={classNames(
           styles["first-dropdown"],
-          styles["second-dropdown"],
-          {
-            [styles["remove-margin__top"]]: basics.length !== 0,
-          }
+          styles["second-dropdown"]
         )}
       >
         <div>
-          {Object.keys(COURSES).map((basicKey) => {
-            const _basic = COURSES[basicKey];
-            const isSelected = basics.includes(_basic);
+          {Object.keys(COURSES).map((intermediateKey) => {
+            const _intermediate = COURSES[intermediateKey];
+            const isSelected = intermediates.includes(_intermediate);
 
             return (
               <DropdownSelectOption
-                key={basicKey}
+                key={intermediateKey}
                 className={classNames(
                   styles["first-option"],
                   styles["second-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_basic)}
+                onClick={() => handleDropdownOptionClick(_intermediate)}
                 isSelected={isSelected}
               >
                 <span
@@ -74,9 +71,9 @@ export function BasicInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {basicKey}
+                  {intermediateKey}
                 </span>
-                <span className={styles["first"]}>{_basic}</span>
+                <span className={styles["first"]}>{_intermediate}</span>
               </DropdownSelectOption>
             );
           })}

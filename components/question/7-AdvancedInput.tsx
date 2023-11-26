@@ -11,35 +11,35 @@ import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
 import { COURSES } from '@/constants';
-import { REMOVE_INTERMEDIATE, SET_INTERMEDIATES } from "@/reducers";
+import { REMOVE_ADVANCED, SET_ADVANCEDS } from "@/reducers";
 
-export function IntermediateInput() {
+export function AdvancedInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.intermediate ?? "";
-  const { intermediates } = state;
+  const errorMsg = error.advanced ?? "";
+  const { advanceds } = state;
 
-  function handleDropdownOptionClick(_intermediate: string) {
+  function handleDropdownOptionClick(_advanced: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.intermediates;
+        delete prevValue.advanceds;
         return prevValue;
       });
 
-    if (intermediates.includes(_intermediate)) {
-      dispatch({ type: REMOVE_INTERMEDIATE, payload: _intermediate });
+    if (advanceds.includes(_advanced)) {
+      dispatch({ type: REMOVE_ADVANCED, payload: _advanced });
     } else {
-      dispatch({ type: SET_INTERMEDIATES, payload: _intermediate });
+      dispatch({ type: SET_ADVANCEDS, payload: _advanced });
 
     }
   }
-
+  
   return (
     <>
-      <QuestionNumHeading questionNum={8}>
-        ¿Qué materias puedes enseñar en nivel intermedio
-        [Quinto a octavo (5° - 8°)]? 
+      <QuestionNumHeading questionNum={9}>
+        ¿Qué materias puedes enseñar en nivel avanzado
+        [Noveno a Doce (9° - 12°)]? 
       </QuestionNumHeading>
       <QuestionBoxPara>
          Selecciona todas las materias que puedas enseñar
@@ -48,25 +48,22 @@ export function IntermediateInput() {
       <DropdownSelect 
         className={classNames(
           styles["first-dropdown"],
-          styles["second-dropdown"],
-          {
-            [styles["remove-margin__top"]]: intermediates.length !== 0,
-          }
+          styles["second-dropdown"]
         )}
       >
         <div>
-          {Object.keys(COURSES).map((intermediateKey) => {
-            const _intermediate = COURSES[intermediateKey];
-            const isSelected = intermediates.includes(_intermediate);
+          {Object.keys(COURSES).map((advancedKey) => {
+            const _advanced = COURSES[advancedKey];
+            const isSelected = advanceds.includes(_advanced);
 
             return (
               <DropdownSelectOption
-                key={intermediateKey}
+                key={advancedKey}
                 className={classNames(
                   styles["first-option"],
                   styles["second-option"],
                 )}
-                onClick={() => handleDropdownOptionClick(_intermediate)}
+                onClick={() => handleDropdownOptionClick(_advanced)}
                 isSelected={isSelected}
               >
                 <span
@@ -74,9 +71,9 @@ export function IntermediateInput() {
                     [styles["selected"]]: isSelected,
                   })}
                 >
-                  {intermediateKey}
+                  {advancedKey}
                 </span>
-                <span className={styles["first"]}>{_intermediate}</span>
+                <span className={styles["first"]}>{_advanced}</span>
               </DropdownSelectOption>
             );
           })}
