@@ -40,7 +40,7 @@ export function Outro() {
       </QuestionBoxPara>}
       <BtnContainer
         showPressEnter={false}
-        onClick={handleOkClick}
+        onClick={handleOnClick}
         className={buttonClass}
       >
         {submitted ? 'Enviado' : 'Enviar'}
