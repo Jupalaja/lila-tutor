@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { QuestionBoxHeading, QuestionBoxPara, BtnContainer } from '../index';
-import { useQuestions, useSharedStates } from "@/contexts";
+import { useQuestions } from "@/contexts";
 import styles from './Question.module.css';
 import { postData } from "@/utils";
 
@@ -9,7 +9,6 @@ export function Outro() {
   const { state } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
-  const { handleOkClick } = useSharedStates();
 
   const { name } = state;
 
@@ -19,6 +18,7 @@ export function Outro() {
     const { name, school, email, phone, basics, intermediates, advanceds, zones } = state;
     const dataToSend = { name, school, email, phone, basics, intermediates, advanceds, zones };
 
+    console.log(dataToSend);
     const success = await postData('/api/send-email', dataToSend);
 
     if (success) {
