@@ -1,8 +1,7 @@
-import { google } from 'googleapis';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import fetch from 'isomorphic-fetch';
 import dotenv from 'dotenv';
 dotenv.config();
+import { google } from 'googleapis';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 let jwtClient: any;
 
@@ -45,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Materias',
+        range: 'Materias_Nuevo',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
