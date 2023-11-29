@@ -10,7 +10,7 @@ export const SET_ADVANCEDS = "SET_ADVANCEDS";
 export const REMOVE_ADVANCED = "REMOVE_ADVANCED";
 export const SET_ZONES = "SET_ZONES";
 export const REMOVE_ZONE = "REMOVE_ZONE";
-export const SET_TYPE = "SET_TYPE";
+export const SET_COMPLETE = "SET_COMPLETE";
 
 export type QuestionsActionsType =
   | { type: "SET_NAME"; payload: string }
@@ -25,4 +25,4 @@ export type QuestionsActionsType =
   | { type: "REMOVE_ADVANCED"; payload: string }
   | { type: "SET_ZONES"; payload: string }
   | { type: "REMOVE_ZONE"; payload: string }
-  | { type: "SET_TYPE"; payload: string };
+  | { type: "SET_COMPLETE" };

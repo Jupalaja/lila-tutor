@@ -6,7 +6,7 @@ import { postData } from "@/utils";
 
 
 export function Outro() {
-  const { state } = useQuestions();
+  const { state, dispatch } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -24,6 +24,7 @@ export function Outro() {
     if (success) {
       setSubmitted(true);
       setSuccess(true);
+      dispatch({ type: 'SET_COMPLETE' })
     }
   };
 

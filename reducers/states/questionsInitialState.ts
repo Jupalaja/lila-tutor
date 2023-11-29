@@ -10,7 +10,7 @@ export const questionsInitialState = {
   times: [],
   phone: "",
   email: "",
-  type: "",
+  isComplete: false,
 };
 
 export type QuestionsStateType = {
@@ -25,5 +25,5 @@ export type QuestionsStateType = {
   times: string[];
   phone: string;
   email: string;
-  type: string;
+  isComplete: boolean;
 };

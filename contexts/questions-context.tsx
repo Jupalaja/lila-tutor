@@ -28,6 +28,9 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
 
   const percent = useMemo(
     function () {
+
+      if (state.isComplete) return 100;
+
       let answeredQues = 0;
       const { name, school, email, phone, basics, intermediates, advanceds, zones } = state;
 

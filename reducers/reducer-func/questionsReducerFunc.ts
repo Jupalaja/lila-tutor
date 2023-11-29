@@ -13,6 +13,7 @@ import {
   REMOVE_ZONE,
   SET_PHONE,
   SET_EMAIL,
+  SET_COMPLETE,
 } from "../index";
 
 export function questionsReducerFunc(
@@ -68,7 +69,9 @@ export function questionsReducerFunc(
         ...state,
         zones: state.zones.filter((zone) => zone !== action.payload),
       };
-
+      case SET_COMPLETE:
+        return { ...state, isComplete: true };
+      
     default:
       return state;
   }

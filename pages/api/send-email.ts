@@ -4,10 +4,12 @@ import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { format } from 'date-fns';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let jwtClient: any;
 
 async function authenticate() {
   if (!jwtClient) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const private_key = process.env.PRIVATE_KEY!.replace(/\\n/g, '\n');
     jwtClient = new google.auth.JWT(
       process.env.CLIENT_EMAIL,
