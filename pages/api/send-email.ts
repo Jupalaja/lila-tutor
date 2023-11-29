@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { format } from 'date-fns';
 
 let jwtClient: any;
 
@@ -39,9 +40,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const basics = body.basics?.join(', ') ?? '';
       const intermediates = body.intermediates?.join(', ') ?? '';
       const advanceds = body.advanceds?.join(', ') ?? '';
-      const zones = body.zones?.join(', ') ?? '';
+      const zones = body.zones?.join(', ') ?? 'No Aplica';
+      const submittedDate = format(new Date(), 'dd/MM/yyyy HH:mm:ss');
 
-      const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones ];
+      const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones, submittedDate ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
         range: 'Materias_Nuevo',
