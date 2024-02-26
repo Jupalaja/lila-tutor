@@ -10,7 +10,7 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { COURSES } from '@/constants';
+import { COURSES } from "@/constants";
 import { REMOVE_BASIC, SET_BASICS } from "@/reducers";
 
 export function BasicInput() {
@@ -31,21 +31,20 @@ export function BasicInput() {
       dispatch({ type: REMOVE_BASIC, payload: _basic });
     } else {
       dispatch({ type: SET_BASICS, payload: _basic });
-
     }
   }
 
   return (
     <>
       <QuestionNumHeading questionNum={7}>
-        ¿Qué materias puedes enseñar en nivel básico
-        [Primero a cuarto (1° - 4°)]? 
+        ¿Qué materias puedes enseñar en nivel básico [Primero a cuarto (1° -
+        4°)]?
       </QuestionNumHeading>
       <QuestionBoxPara>
-         Selecciona todas las materias que puedas enseñar
+        Deja este campo vacio si no enseñarás materias de nivel básico
       </QuestionBoxPara>
 
-      <DropdownSelect 
+      <DropdownSelect
         className={classNames(
           styles["first-dropdown"],
           styles["second-dropdown"]
@@ -61,7 +60,7 @@ export function BasicInput() {
                 key={basicKey}
                 className={classNames(
                   styles["first-option"],
-                  styles["second-option"],
+                  styles["second-option"]
                 )}
                 onClick={() => handleDropdownOptionClick(_basic)}
                 isSelected={isSelected}

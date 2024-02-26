@@ -10,7 +10,7 @@ import {
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { COURSES } from '@/constants';
+import { COURSES } from "@/constants";
 import { REMOVE_INTERMEDIATE, SET_INTERMEDIATES } from "@/reducers";
 
 export function IntermediateInput() {
@@ -31,21 +31,20 @@ export function IntermediateInput() {
       dispatch({ type: REMOVE_INTERMEDIATE, payload: _intermediate });
     } else {
       dispatch({ type: SET_INTERMEDIATES, payload: _intermediate });
-
     }
   }
 
   return (
     <>
       <QuestionNumHeading questionNum={8}>
-        ¿Qué materias puedes enseñar en nivel intermedio
-        [Quinto a octavo (5° - 8°)]? 
+        ¿Qué materias puedes enseñar en nivel intermedio [Quinto a octavo (5° -
+        8°)]?
       </QuestionNumHeading>
       <QuestionBoxPara>
-         Selecciona todas las materias que puedas enseñar
+        Deja este campo vacio si no enseñarás materias de nivel intermedio
       </QuestionBoxPara>
 
-      <DropdownSelect 
+      <DropdownSelect
         className={classNames(
           styles["first-dropdown"],
           styles["second-dropdown"]
@@ -61,7 +60,7 @@ export function IntermediateInput() {
                 key={intermediateKey}
                 className={classNames(
                   styles["first-option"],
-                  styles["second-option"],
+                  styles["second-option"]
                 )}
                 onClick={() => handleDropdownOptionClick(_intermediate)}
                 isSelected={isSelected}
