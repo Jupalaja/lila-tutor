@@ -1,9 +1,16 @@
+.dropdown-select {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
 .dropdown-select__options {
   background-color: var(--body-background-color);
-  margin-top: 8px;
-  max-height: 30vh; /* Limit the height to 50% of the viewport height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 0px;
+  max-height: 30vh;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  position: relative;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -11,6 +18,50 @@
 
 .dropdown-select__options::-webkit-scrollbar {
   display: none;
+}
+
+.dropdown-select__arrow-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+.dropdown-select__arrow-indicator {
+  width: calc(100% - 10px); /* Adjust if you have padding */
+  margin-left: auto; /* These two margin properties will center the button container */
+  margin-right: auto;
+}
+
+.dropdown-select__arrow-indicator--hidden {
+  visibility: hidden;
+  pointer-events: none;
+  margin-bottom: 0px;
+}
+
+.dropdown-select__gradient {
+  position: absolute;
+  bottom: 25px; /* Height of your indicator so that the gradient overlays the options content */
+  left: 0;
+  right: 0;
+  height: 25px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--body-background-color)
+  );
+  z-index: 0;
+  pointer-events: none; /* Prevent the gradient from being clickable */
+}
+
+.arrow-up {
+  transform: rotate(270deg); /* Rotate arrow 90 degrees to the left */
+}
+
+.arrow-down {
+  transform: rotate(90deg); /* Rotate arrow 90 degrees to the left */
 }
 
 @media screen and (max-width: 599px) {

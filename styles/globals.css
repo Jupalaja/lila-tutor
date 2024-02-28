@@ -13,7 +13,7 @@
   --dropdown-background-color: rgba(0, 0, 0, 0.1);
 
   --error-background-color: rgb(84, 130, 194);
-  --error-text-color: rgb(175, 4, 4);
+  --error-text-color: #FFF;
 
   --para-text-color: rgba(0, 19, 49, 1);
   --placeholder-color: rgba(0, 19, 49, 0.3);

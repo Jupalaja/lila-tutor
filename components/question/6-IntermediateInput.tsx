@@ -36,12 +36,12 @@ export function IntermediateInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={8}>
+      <QuestionNumHeading questionNum={6}>
         ¿Qué materias puedes enseñar en nivel intermedio [Quinto a octavo (5° -
         8°)]?
       </QuestionNumHeading>
       <QuestionBoxPara>
-        Deja este campo vacio si no enseñarás materias de nivel intermedio
+        Deja este campo vacio si NO enseñarás materias de nivel intermedio
       </QuestionBoxPara>
 
       <DropdownSelect

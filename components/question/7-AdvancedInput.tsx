@@ -36,12 +36,12 @@ export function AdvancedInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={9}>
+      <QuestionNumHeading questionNum={7}>
         ¿Qué materias puedes enseñar en nivel avanzado [Noveno a Doce (9° -
         12°)]?
       </QuestionNumHeading>
       <QuestionBoxPara>
-        Deja este campo vacio si no enseñarás materias de nivel avanzado
+        Deja este campo vacio si NO enseñarás materias de nivel avanzado
       </QuestionBoxPara>
 
       <DropdownSelect

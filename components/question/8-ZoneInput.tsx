@@ -37,7 +37,7 @@ export function ZoneInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={10}>
+      <QuestionNumHeading questionNum={8}>
         ¿En qué zonas puedes dar clases presenciales?
       </QuestionNumHeading>
       <QuestionBoxPara>

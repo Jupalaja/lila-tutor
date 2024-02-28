@@ -1,6 +1,6 @@
 import { useQuestions, useSharedStates } from "@/contexts";
 import { useEffect } from "react";
-import { isNotValidEmail } from "@/utils";
+import { isNotValidEmail, isValidPhoneNumber } from "@/utils";
 
 export function useHandleKeypress() {
   const { questionNum, setErrorMsg, handleQuestionNumUpdate } =
@@ -16,7 +16,6 @@ export function useHandleKeypress() {
     basics,
     intermediates,
     advanceds,
-    zones,
   } = state;
 
   useEffect(() => {
@@ -52,6 +51,12 @@ export function useHandleKeypress() {
           setErrorMsg((prevValue) => ({
             ...prevValue,
             phone: "Por favor llena este campo",
+          }));
+          return;
+        } else if (now + 1 === 5 && phone && !isValidPhoneNumber(phone)){
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            phone: "Hmm... el número no parece válido",
           }));
           return;
         }

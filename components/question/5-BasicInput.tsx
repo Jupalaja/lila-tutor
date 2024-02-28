@@ -36,12 +36,12 @@ export function BasicInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={7}>
+      <QuestionNumHeading questionNum={5}>
         ¿Qué materias puedes enseñar en nivel básico [Primero a cuarto (1° -
         4°)]?
       </QuestionNumHeading>
       <QuestionBoxPara>
-        Deja este campo vacio si no enseñarás materias de nivel básico
+        Deja este campo vacio si NO enseñarás materias de nivel básico
       </QuestionBoxPara>
 
       <DropdownSelect
