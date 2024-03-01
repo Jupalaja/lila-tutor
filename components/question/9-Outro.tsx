@@ -8,6 +8,8 @@ import { postData } from "@/utils";
 export function Outro() {
   const { state, dispatch } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
   const [success, setSuccess] = useState(false);
 
   const { name } = state;
@@ -26,9 +28,9 @@ export function Outro() {
       setSuccess(true);
       dispatch({ type: 'SET_COMPLETE' })
     }
-  };
 
-  const buttonClass = submitted ? styles.successfulSubmission: '';
+    setSubmitting(false);
+  };
 
   return (
     <>
@@ -42,9 +44,11 @@ export function Outro() {
       <BtnContainer
         showPressEnter={false}
         onClick={handleOnClick}
-        className={buttonClass}
+        className={`${
+          submitting || submitted ? styles.successfulSubmission : ''
+        } ${submitting ? styles.btnLoading : ''}`}
       >
-        {submitted ? 'Enviado' : 'Enviar'}
+        {submitting ? 'Cargando...' : submitted ? 'Enviado' : 'Enviar'}
       </BtnContainer>
     </>
   );
