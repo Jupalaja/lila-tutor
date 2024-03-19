@@ -1,5 +1,5 @@
-import { QuestionProps } from "@/types";
-import classNames from "classnames";
+import { QuestionProps } from '@/types';
+import classNames from 'classnames';
 import {
   NameInput,
   BasicInput,
@@ -11,9 +11,8 @@ import {
   IntermediateInput,
   AdvancedInput,
   ZoneInput,
-
-} from "./index";
-import styles from "./Question.module.css";
+} from './index';
+import styles from './Question.module.css';
 
 export function Question({
   inView,
@@ -25,26 +24,26 @@ export function Question({
 }: QuestionProps) {
   return (
     <div
-      className={classNames(styles["question-box"], {
-        [styles["slide-out"]]: outView,
-        [styles["slide-in"]]: inView,
-        [styles["out-view__up"]]: outViewSlide === "up",
-        [styles["out-view__down"]]: outViewSlide === "down",
-        [styles["in-view__up"]]: inViewSlide === "up",
-        [styles["in-view__down"]]: inViewSlide === "down",
-        [styles["rendered"]]: isRendered,
+      className={classNames(styles['question-box'], {
+        [styles['slide-out']]: outView,
+        [styles['slide-in']]: inView,
+        [styles['out-view__up']]: outViewSlide === 'up',
+        [styles['out-view__down']]: outViewSlide === 'down',
+        [styles['in-view__up']]: inViewSlide === 'up',
+        [styles['in-view__down']]: inViewSlide === 'down',
+        [styles['rendered']]: isRendered,
       })}
     >
-      {type === "intro" && <Intro />}
-      {type === "name" && <NameInput />}
-      {type === "school" && <SchoolInput />}
-      {type === "email" && <EmailInput />}
-      {type === "phone" && <PhoneInput />}
-      {type === "basic" && <BasicInput />}
-      {type === "intermediate" && <IntermediateInput />}
-      {type === "advanced" && <AdvancedInput />}
-      {type === "zone" && <ZoneInput />}
-      {type == "outro"  && <Outro />}
+      {type === 'intro' && <Intro />}
+      {type === 'name' && <NameInput />}
+      {type === 'school' && <SchoolInput />}
+      {type === 'email' && <EmailInput />}
+      {type === 'phone' && <PhoneInput />}
+      {type === 'basic' && <BasicInput />}
+      {type === 'intermediate' && <IntermediateInput />}
+      {type === 'advanced' && <AdvancedInput />}
+      {type === 'zone' && <ZoneInput />}
+      {type == 'outro' && <Outro />}
     </div>
   );
 }

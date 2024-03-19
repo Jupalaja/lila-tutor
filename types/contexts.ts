@@ -1,6 +1,6 @@
-import { QuestionsActionsType, QuestionsStateType } from "@/reducers";
-import { Dispatch, SetStateAction } from "react";
-import { ObjectType } from "./index";
+import { QuestionsActionsType, QuestionsStateType } from '@/reducers';
+import { Dispatch, SetStateAction } from 'react';
+import { ObjectType } from './index';
 
 /**
  * questions-context
@@ -27,4 +27,6 @@ export type SharedStatesContextType = {
   readonly setShowSchoolsList: Dispatch<SetStateAction<boolean>>;
   readonly handleQuestionNumUpdate: () => void;
   readonly handleOkClick: () => void;
+  readonly scrollEnabled: boolean;
+  readonly setScrollEnabled: Dispatch<SetStateAction<boolean>>;
 };

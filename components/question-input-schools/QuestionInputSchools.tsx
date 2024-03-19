@@ -2,11 +2,11 @@ import {
   DropdownSelect,
   DropdownSelectOption,
   QuestionInputText,
-} from "../index";
-import styles from "./QuestionInputSchools.module.css";
-import classNames from "classnames";
-import Image from "next/image";
-import { useSchools } from "@/hooks";
+} from '../index';
+import styles from './QuestionInputSchools.module.css';
+import classNames from 'classnames';
+import Image from 'next/image';
+import { useSchools } from '@/hooks';
 import {
   ChangeEvent,
   Dispatch,
@@ -15,10 +15,10 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react";
-import { SET_SCHOOL } from "@/reducers";
-import { useQuestions, useSharedStates } from "@/contexts";
-import { SchoolsProps, ObjectType } from "@/types";
+} from 'react';
+import { SET_SCHOOL } from '@/reducers';
+import { useQuestions, useSharedStates } from '@/contexts';
+import { SchoolsProps, ObjectType } from '@/types';
 
 type QuestionInputSchoolsProps = SchoolsProps & {
   readonly setErrorMsg: Dispatch<SetStateAction<ObjectType>> | undefined;
@@ -58,15 +58,11 @@ export function QuestionInputSchools({
   }, []);
 
   useEffect(() => {
-    if (
-      localSchool &&
-      filterSchools.length === 0 &&
-      school !== localSchool
-    ) {
+    if (localSchool && filterSchools.length === 0 && school !== localSchool) {
       setErrorMsg &&
         setErrorMsg((prevValue) => ({
           ...prevValue,
-          school: "No suggestions found",
+          school: 'No suggestions found',
         }));
     } else {
       setErrorMsg &&
@@ -84,7 +80,7 @@ export function QuestionInputSchools({
 
   function handleInputChange(event: ChangeEvent) {
     const typedValue = (event.target as HTMLInputElement).value;
-    dispatch({ type: SET_SCHOOL, payload: "" });
+    dispatch({ type: SET_SCHOOL, payload: '' });
 
     if (typedValue) {
       setShowSchoolsList(true);
@@ -104,9 +100,9 @@ export function QuestionInputSchools({
 
   function handleCrossBtnClick(event: MouseEvent) {
     event.stopPropagation();
-    setLocalSchool("");
+    setLocalSchool('');
     setShowSchoolsList(false);
-    dispatch({ type: SET_SCHOOL, payload: "" });
+    dispatch({ type: SET_SCHOOL, payload: '' });
     inputTextRef.current?.focus();
   }
 
@@ -130,11 +126,11 @@ export function QuestionInputSchools({
 
   return (
     <div
-      className={styles["dropdown-select__schools"]}
+      className={styles['dropdown-select__schools']}
       onClick={handleDropdownClick}
     >
       <QuestionInputText
-        className={styles["dropdown-select__input"]}
+        className={styles['dropdown-select__input']}
         placeholder="Ingresa el nombre del colegio"
         value={localSchool}
         onChange={handleInputChange}
@@ -142,13 +138,13 @@ export function QuestionInputSchools({
       />
 
       <button
-        className={classNames(styles["dropdown-select__btn"], {
-          [styles["close"]]: !showSchoolsList && !localSchool,
+        className={classNames(styles['dropdown-select__btn'], {
+          [styles['close']]: !showSchoolsList && !localSchool,
         })}
         onClick={localSchool ? handleCrossBtnClick : handleUpArrowClick}
       >
         <Image
-          src={localSchool ? "/close.svg" : "/navigate-next.svg"}
+          src={localSchool ? '/close.svg' : '/navigate-next.svg'}
           alt="dropdown arrow"
           width={26}
           height={26}
@@ -156,8 +152,9 @@ export function QuestionInputSchools({
       </button>
 
       <DropdownSelect
-        className={classNames(styles["dropdown-select__options"], {
-          [styles["show"]]: showSchoolsList && filterSchools.length,
+        showUpIndicator={false}
+        className={classNames(styles['dropdown-select__options'], {
+          [styles['show']]: showSchoolsList && filterSchools.length,
         })}
       >
         {filterSchools.map(function (_school) {

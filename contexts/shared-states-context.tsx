@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { TOTAL_QUESTIONS } from "@/constants";
-import { ObjectType, QuestionNumType, SharedStatesContextType } from "@/types";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { TOTAL_QUESTIONS } from '@/constants';
+import { ObjectType, QuestionNumType, SharedStatesContextType } from '@/types';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 const SharedStatesContext = createContext<SharedStatesContextType>({
   questionNum: { prev: null, now: 0 },
@@ -12,6 +12,8 @@ const SharedStatesContext = createContext<SharedStatesContextType>({
   setShowSchoolsList: () => {},
   handleQuestionNumUpdate: () => {},
   handleOkClick: () => {},
+  scrollEnabled: true,
+  setScrollEnabled: () => {},
 });
 
 type SharedStatesProviderType = {
@@ -23,6 +25,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
     prev: null,
     now: 0,
   });
+
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const [errorMsg, setErrorMsg] = useState<ObjectType>({});
   const [showSchoolsList, setShowSchoolsList] = useState(false);
@@ -37,8 +41,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
 
   function handleOkClick() {
     document.dispatchEvent(
-      new KeyboardEvent("keypress", {
-        key: "Enter",
+      new KeyboardEvent('keypress', {
+        key: 'Enter',
       })
     );
   }
@@ -52,6 +56,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
     setShowSchoolsList,
     handleQuestionNumUpdate,
     handleOkClick,
+    scrollEnabled,
+    setScrollEnabled,
   };
 
   return (
@@ -68,5 +74,5 @@ export function useSharedStates(): SharedStatesContextType {
     return context;
   }
 
-  throw new Error("useSharedStates must be use inside SharedStatesProvider");
+  throw new Error('useSharedStates must be use inside SharedStatesProvider');
 }

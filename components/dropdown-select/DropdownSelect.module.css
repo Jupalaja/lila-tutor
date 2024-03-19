@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: stretch;
   position: relative;
+  margin-bottom: 0px;
 }
 .dropdown-select__options {
   background-color: var(--body-background-color);
@@ -38,7 +39,6 @@
 .dropdown-select__arrow-indicator--hidden {
   visibility: hidden;
   pointer-events: none;
-  margin-bottom: 0px;
 }
 
 .dropdown-select__gradient {

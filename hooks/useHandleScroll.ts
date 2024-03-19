@@ -1,12 +1,14 @@
-import { useSharedStates } from "@/contexts";
-import { useEffect, useRef } from "react";
+import { useSharedStates } from '@/contexts';
+import { useEffect, useRef } from 'react';
 
 export function useHandleScroll() {
   const timerIdRef = useRef<NodeJS.Timeout>();
-  const { setQuestionNum, handleOkClick, setErrorMsg } = useSharedStates();
+  const { setQuestionNum, handleOkClick, setErrorMsg, scrollEnabled } =
+    useSharedStates();
 
   useEffect(() => {
     function handleScroll(event: WheelEvent) {
+      if (!scrollEnabled) return;
       clearTimeout(timerIdRef.current);
 
       timerIdRef.current = setTimeout(() => {
@@ -23,12 +25,12 @@ export function useHandleScroll() {
       }, 32);
     }
 
-    document.addEventListener("wheel", handleScroll);
+    document.addEventListener('wheel', handleScroll);
 
     return function () {
-      document.removeEventListener("wheel", handleScroll);
+      document.removeEventListener('wheel', handleScroll);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [scrollEnabled]);
 }

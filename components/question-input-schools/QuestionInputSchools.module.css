@@ -1,9 +1,9 @@
-.dropdown-select__schools {
+.dropdown-select__Schools {
   position: relative;
   width: 100%;
 }
 
-.dropdown-select__schools .dropdown-select__input {
+.dropdown-select__Schools .dropdown-select__input {
   margin-top: 32px;
   padding-right: 32px;
 }
@@ -41,7 +41,7 @@
 }
 
 .dropdown-select__options.show {
-  border-bottom: thin dashed var(--btn-text-color);
+  /*border-bottom: thin dashed var(--btn-text-color);*/
   max-height: 43.5vh;
 }
 

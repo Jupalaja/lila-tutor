@@ -3,19 +3,19 @@ import {
   Error,
   QuestionInputText,
   QuestionNumHeading,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { ChangeEventHandler } from "react";
-import { SET_NAME } from "@/reducers";
-import { useQuestions, useSharedStates } from "@/contexts";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { ChangeEventHandler } from 'react';
+import { SET_NAME } from '@/reducers';
+import { useQuestions, useSharedStates } from '@/contexts';
 
 export function NameInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.name ?? "";
+  const errorMsg = error.name ?? '';
   const { name } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -32,7 +32,7 @@ export function NameInput() {
   return (
     <>
       <QuestionNumHeading questionNum={1}>
-        ¿Cuál es tu nombre? 
+        ¿Cuál es tu nombre?
       </QuestionNumHeading>
 
       <QuestionInputText
@@ -43,13 +43,13 @@ export function NameInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
-          showPressEnter={true}
+          className={classNames(styles['btn-container'], styles['ok'])}
           onClick={handleOkClick}
+          showPressEnter={false}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

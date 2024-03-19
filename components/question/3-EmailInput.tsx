@@ -1,22 +1,22 @@
-import { useQuestions, useSharedStates } from "@/contexts";
-import classNames from "classnames";
+import { useQuestions, useSharedStates } from '@/contexts';
+import classNames from 'classnames';
 import {
   BtnContainer,
   Error,
   QuestionBoxPara,
   QuestionInputText,
   QuestionNumHeading,
-} from "../index";
-import Image from "next/image";
-import styles from "./Question.module.css";
-import { ChangeEventHandler } from "react";
-import { SET_EMAIL } from "@/reducers";
+} from '../index';
+import Image from 'next/image';
+import styles from './Question.module.css';
+import { ChangeEventHandler } from 'react';
+import { SET_EMAIL } from '@/reducers';
 
 export function EmailInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.email ?? "";
+  const errorMsg = error.email ?? '';
   const { email } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -49,13 +49,13 @@ export function EmailInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
-          showPressEnter={true}
+          className={classNames(styles['btn-container'], styles['ok'])}
+          showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"
