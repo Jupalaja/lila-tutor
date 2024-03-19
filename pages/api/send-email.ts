@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { format } from 'date-fns';
+import moment from 'moment-timezone';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let jwtClient: any;
@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const intermediates = body.intermediates?.join(', ') ?? '';
       const advanceds = body.advanceds?.join(', ') ?? '';
       const zones = body.zones?.join(', ') ?? 'No Aplica';
-      const submittedDate = format(new Date(), 'dd/MM/yyyy HH:mm:ss');
+      const submittedDate = moment().tz('America/Bogota').format('DD/MM/YYYY HH:mm:ss');
 
       const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones, submittedDate ];
       const googleSheetRequest = {
