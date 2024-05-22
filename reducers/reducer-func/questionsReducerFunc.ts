@@ -3,6 +3,7 @@ import {
   QuestionsStateType,
   SET_NAME,
   SET_SCHOOL,
+  SET_IDENTIFICATION,
   SET_BASICS,
   REMOVE_BASIC,
   SET_INTERMEDIATES,
@@ -14,7 +15,7 @@ import {
   SET_PHONE,
   SET_EMAIL,
   SET_COMPLETE,
-} from "../index";
+} from '../index';
 
 export function questionsReducerFunc(
   state: QuestionsStateType,
@@ -27,6 +28,15 @@ export function questionsReducerFunc(
     case SET_SCHOOL:
       return { ...state, school: action.payload };
 
+    case SET_PHONE:
+      return { ...state, phone: action.payload };
+
+    case SET_EMAIL:
+      return { ...state, email: action.payload };
+
+    case SET_IDENTIFICATION:
+      return { ...state, identification: action.payload };
+
     case SET_BASICS:
       return { ...state, basics: [...state.basics, action.payload] };
 
@@ -36,20 +46,18 @@ export function questionsReducerFunc(
         basics: state.basics.filter((basic) => basic !== action.payload),
       };
 
-    case SET_PHONE:
-      return { ...state, phone: action.payload };
-        
-    case SET_EMAIL:
-      return { ...state, email: action.payload };
-
-    
     case SET_INTERMEDIATES:
-      return { ...state, intermediates: [...state.intermediates, action.payload] };
+      return {
+        ...state,
+        intermediates: [...state.intermediates, action.payload],
+      };
 
     case REMOVE_INTERMEDIATE:
       return {
         ...state,
-        intermediates: state.intermediates.filter((intermediate) => intermediate !== action.payload),
+        intermediates: state.intermediates.filter(
+          (intermediate) => intermediate !== action.payload
+        ),
       };
 
     case SET_ADVANCEDS:
@@ -58,7 +66,9 @@ export function questionsReducerFunc(
     case REMOVE_ADVANCED:
       return {
         ...state,
-        advanceds: state.advanceds.filter((advanced) => advanced !== action.payload),
+        advanceds: state.advanceds.filter(
+          (advanced) => advanced !== action.payload
+        ),
       };
 
     case SET_ZONES:
@@ -69,9 +79,9 @@ export function questionsReducerFunc(
         ...state,
         zones: state.zones.filter((zone) => zone !== action.payload),
       };
-      case SET_COMPLETE:
-        return { ...state, isComplete: true };
-      
+    case SET_COMPLETE:
+      return { ...state, isComplete: true };
+
     default:
       return state;
   }

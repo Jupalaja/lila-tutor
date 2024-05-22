@@ -15,18 +15,22 @@ async function authenticate() {
       process.env.CLIENT_EMAIL,
       undefined,
       private_key,
-      ['https://www.googleapis.com/auth/spreadsheets'],
+      ['https://www.googleapis.com/auth/spreadsheets']
     );
   }
   return jwtClient;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   type ReqBody = {
     name: string;
     school: string;
     email: string;
     phone: string;
+    identification: string;
     basics: string[];
     intermediates: string[];
     advanceds: string[];
@@ -43,27 +47,51 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const intermediates = body.intermediates?.join(', ') ?? '';
       const advanceds = body.advanceds?.join(', ') ?? '';
       const zones = body.zones?.join(', ') ?? 'No Aplica';
-      const submittedDate = moment().tz('America/Bogota').format('DD/MM/YYYY HH:mm:ss');
+      const submittedDate = moment()
+        .tz('America/Bogota')
+        .format('DD/MM/YYYY HH:mm:ss');
 
-      const googleSheetData = [body.name, body.school, body.email, body.phone, basics, intermediates, advanceds, zones, submittedDate ];
+      const googleSheetData = [
+        body.name,
+        body.school,
+        body.email,
+        body.phone,
+        body.identification,
+        basics,
+        intermediates,
+        advanceds,
+        zones,
+        submittedDate,
+      ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
         range: 'Materias_Nuevo',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
-      const response = await sheets.spreadsheets.values.append(googleSheetRequest);
+      const response = await sheets.spreadsheets.values.append(
+        googleSheetRequest
+      );
 
       if (response.status === 200) {
-        res.status(200).json({ message: "Data processed and sent successfully to both Google Sheets and IFTTT." });
+        res.status(200).json({
+          message:
+            'Data processed and sent successfully to both Google Sheets and IFTTT.',
+        });
       } else {
-        throw new Error('An error occurred while processing and sending the data.');
+        throw new Error(
+          'An error occurred while processing and sending the data.'
+        );
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'An error occurred while processing and sending the data.' });
+      res.status(500).json({
+        message: 'An error occurred while processing and sending the data.',
+      });
     }
   } else {
-    res.status(405).json({ message: 'Method not allowed. Please send a POST request.' });
+    res
+      .status(405)
+      .json({ message: 'Method not allowed. Please send a POST request.' });
   }
 }

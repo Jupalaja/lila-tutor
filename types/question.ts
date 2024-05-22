@@ -1,23 +1,23 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export type QuestionProps = {
   readonly inView: boolean;
-  readonly inViewSlide: "up" | "down" | "";
+  readonly inViewSlide: 'up' | 'down' | '';
   readonly outView: boolean;
-  readonly outViewSlide: "up" | "down" | "";
+  readonly outViewSlide: 'up' | 'down' | '';
   readonly isRendered?: boolean;
   readonly type:
-    | "intro"
-    | "name"
-    | "school"
-    | "email"
-    | "phone"
-    | "basic"
-    | "intermediate"
-    | "advanced"
-    | "zone"
-    | "outro";
-
+    | 'intro'
+    | 'name'
+    | 'school'
+    | 'email'
+    | 'phone'
+    | 'identification'
+    | 'basic'
+    | 'intermediate'
+    | 'advanced'
+    | 'zone'
+    | 'outro';
 };
 
 export type SchoolsProps = {

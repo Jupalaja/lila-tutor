@@ -78,7 +78,7 @@ export function MainContent() {
 
         {[4, 6].includes(prev ?? 0) && [now - 1, now, now + 1].includes(5) && (
           <Question
-            type="basic"
+            type="identification"
             outView={[now - 1, now + 1].includes(5)}
             outViewSlide={now - 1 === 5 ? 'up' : 'down'}
             inView={now === 5}
@@ -88,7 +88,7 @@ export function MainContent() {
 
         {[5, 7].includes(prev ?? 0) && [now - 1, now, now + 1].includes(6) && (
           <Question
-            type="intermediate"
+            type="basic"
             outView={[now - 1, now + 1].includes(6)}
             outViewSlide={now - 1 === 6 ? 'up' : 'down'}
             inView={now === 6}
@@ -98,7 +98,7 @@ export function MainContent() {
 
         {[6, 8].includes(prev ?? 0) && [now - 1, now, now + 1].includes(7) && (
           <Question
-            type="advanced"
+            type="intermediate"
             outView={[now - 1, now + 1].includes(7)}
             outViewSlide={now - 1 === 7 ? 'up' : 'down'}
             inView={now === 7}
@@ -108,7 +108,7 @@ export function MainContent() {
 
         {[7, 9].includes(prev ?? 0) && [now - 1, now, now + 1].includes(8) && (
           <Question
-            type="zone"
+            type="advanced"
             outView={[now - 1, now + 1].includes(8)}
             outViewSlide={now - 1 === 8 ? 'up' : 'down'}
             inView={now === 8}
@@ -116,12 +116,22 @@ export function MainContent() {
           />
         )}
 
-        {prev === 8 && [now - 1, now, now + 1].includes(9) && (
+        {[8, 10].includes(prev ?? 0) && [now - 1, now, now + 1].includes(9) && (
           <Question
-            type="outro"
+            type="zone"
             outView={[now - 1, now + 1].includes(9)}
             outViewSlide={now - 1 === 9 ? 'up' : 'down'}
             inView={now === 9}
+            inViewSlide={prev === 10 ? 'down' : 'up'}
+          />
+        )}
+
+        {prev === 9 && [now - 1, now, now + 1].includes(10) && (
+          <Question
+            type="outro"
+            outView={[now - 1, now + 1].includes(10)}
+            outViewSlide={now - 1 === 10 ? 'up' : 'down'}
+            inView={now === 10}
             inViewSlide={'up'}
           />
         )}

@@ -1,24 +1,26 @@
 export const questionsInitialState = {
-  name: "",
-  school: "",
-  role: "",
+  name: '',
+  school: '',
+  role: '',
+  identification: '',
   basics: [],
   intermediates: [],
   advanceds: [],
   zones: [],
   days: [],
   times: [],
-  phone: "",
-  email: "",
+  phone: '',
+  email: '',
   isComplete: false,
 };
 
 export type QuestionsStateType = {
   name: string;
   school: string;
-  role: string; 
-  basics: string[];    
-  intermediates : string[];
+  role: string;
+  identification: string;
+  basics: string[];
+  intermediates: string[];
   advanceds: string[];
   zones: string[];
   days: string[];
