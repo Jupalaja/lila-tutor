@@ -1,4 +1,4 @@
-import { useQuestions, useSharedStates } from "@/contexts";
+import { useQuestions, useSharedStates } from '@/contexts';
 import {
   BtnContainer,
   DropdownSelect,
@@ -6,18 +6,18 @@ import {
   Error,
   QuestionNumHeading,
   QuestionBoxPara,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
+} from '../index';
+import classNames from 'classnames';
+import Image from 'next/image';
 import { ZONES } from '@/constants';
-import { REMOVE_ZONE, SET_ZONES } from "@/reducers";
+import { REMOVE_ZONE, SET_ZONES } from '@/reducers';
+import styles from './ZoneInput.module.css'; // Import the new CSS module
 
 export function ZoneInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.zones ?? "";
+  const errorMsg = error.zones ?? '';
   const { zones } = state;
 
   function handleDropdownOptionClick(_zone: string) {
@@ -31,7 +31,6 @@ export function ZoneInput() {
       dispatch({ type: REMOVE_ZONE, payload: _zone });
     } else {
       dispatch({ type: SET_ZONES, payload: _zone });
-
     }
   }
 
@@ -44,50 +43,54 @@ export function ZoneInput() {
         Deja este campo vacio si sólo puedes dar clases virtuales
       </QuestionBoxPara>
 
-      <DropdownSelect 
-        className={classNames(
-          styles["first-dropdown"],
-          styles["second-dropdown"]
-        )}
-      >
-        <div>
-          {Object.keys(ZONES).map((zoneKey) => {
-            const _zone = ZONES[zoneKey];
-            const isSelected = zones.includes(_zone);
+      <DropdownSelect className={classNames(styles['dropdown-with-image'])}>
+        <div className={styles['dropdown-content']}>
+          <div className={styles['options-container']}>
+            {Object.keys(ZONES).map((zoneKey) => {
+              const _zone = ZONES[zoneKey];
+              const isSelected = zones.includes(_zone);
 
-            return (
-              <DropdownSelectOption
-                key={zoneKey}
-                className={classNames(
-                  styles["first-option"],
-                  styles["second-option"],
-                )}
-                onClick={() => handleDropdownOptionClick(_zone)}
-                isSelected={isSelected}
-              >
-                <span
-                  className={classNames({
-                    [styles["selected"]]: isSelected,
-                  })}
+              return (
+                <DropdownSelectOption
+                  key={zoneKey}
+                  className={classNames(styles['first-option'])}
+                  onClick={() => handleDropdownOptionClick(_zone)}
+                  isSelected={isSelected}
                 >
-                  {zoneKey}
-                </span>
-                <span className={styles["first"]}>{_zone}</span>
-              </DropdownSelectOption>
-            );
-          })}
+                  <span
+                    className={classNames({
+                      [styles['selected']]: isSelected,
+                    })}
+                  >
+                    {zoneKey}
+                  </span>
+                  <span className={styles['first']}>{_zone}</span>
+                </DropdownSelectOption>
+              );
+            })}
+          </div>
+          <div className={styles['image-container']}>
+            <Image
+              src="/mapa.jpeg"
+              alt="Map of Zones"
+              className={styles['zone-image']}
+              layout="responsive"
+              width={250}
+              height={250}
+            />
+          </div>
         </div>
       </DropdownSelect>
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

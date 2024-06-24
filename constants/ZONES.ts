@@ -1,11 +1,10 @@
-import { ObjectType } from "@/types";
+import { ObjectType } from '@/types';
 
 export const ZONES: ObjectType = {
-    1: "193-147 autopista-séptima",
-    2: "147-100 autopista-carrera 1",
-    3: "100-67 autopista-circunvalar",
-    4: "183-129 autopista-avenida suba",
-    5: "129-80 autopista-Boyaca",
-    6: "Otra",
+  1: 'Zona 1',
+  2: 'Zona 2',
+  3: 'Zona 3',
+  4: 'Zona 4',
+  5: 'Zona 5',
+  6: 'Otra',
 };
-

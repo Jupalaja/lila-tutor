@@ -1,4 +1,4 @@
-import { useQuestions, useSharedStates } from "@/contexts";
+import { useQuestions, useSharedStates } from '@/contexts';
 import {
   BtnContainer,
   DropdownSelect,
@@ -6,18 +6,18 @@ import {
   Error,
   QuestionNumHeading,
   QuestionBoxPara,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { COURSES } from "@/constants";
-import { REMOVE_ADVANCED, SET_ADVANCEDS } from "@/reducers";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { COURSES } from '@/constants';
+import { REMOVE_ADVANCED, SET_ADVANCEDS } from '@/reducers';
 
 export function AdvancedInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.advanced ?? "";
+  const errorMsg = error.advanced ?? '';
   const { advanceds } = state;
 
   function handleDropdownOptionClick(_advanced: string) {
@@ -46,8 +46,8 @@ export function AdvancedInput() {
 
       <DropdownSelect
         className={classNames(
-          styles["first-dropdown"],
-          styles["second-dropdown"]
+          styles['first-dropdown'],
+          styles['second-dropdown']
         )}
       >
         <div>
@@ -59,20 +59,20 @@ export function AdvancedInput() {
               <DropdownSelectOption
                 key={advancedKey}
                 className={classNames(
-                  styles["first-option"],
-                  styles["second-option"]
+                  styles['first-option'],
+                  styles['second-option']
                 )}
                 onClick={() => handleDropdownOptionClick(_advanced)}
                 isSelected={isSelected}
               >
                 <span
                   className={classNames({
-                    [styles["selected"]]: isSelected,
+                    [styles['selected']]: isSelected,
                   })}
                 >
                   {advancedKey}
                 </span>
-                <span className={styles["first"]}>{_advanced}</span>
+                <span className={styles['first']}>{_advanced}</span>
               </DropdownSelectOption>
             );
           })}
@@ -81,13 +81,13 @@ export function AdvancedInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"
