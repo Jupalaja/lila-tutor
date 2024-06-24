@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { ZONES } from '@/constants';
 import { REMOVE_ZONE, SET_ZONES } from '@/reducers';
-import styles from './ZoneInput.module.css'; // Import the new CSS module
+import styles from './ZoneInput.module.css';
 
 export function ZoneInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
@@ -72,7 +72,7 @@ export function ZoneInput() {
           <div className={styles['image-container']}>
             <Image
               src="/mapa.jpeg"
-              alt="Map of Zones"
+              alt="Your description"
               className={styles['zone-image']}
               layout="responsive"
               width={250}
